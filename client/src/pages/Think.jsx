@@ -1,9 +1,18 @@
 import React from 'react'
+import ThinkComponent from '../components/ThinkComponent'
+import SavedBrackets from '../components/SavedBrackets'
+
+
 
 export default function Think() {
   return (
     <>
-      <h1>Think page</h1>
+      <aside>
+      <SavedBrackets />
+      </aside>
+      <main>
+      <ThinkComponent />
+      </main>
     </>
   )
 }
