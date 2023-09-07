@@ -1,9 +1,10 @@
 import React from 'react'
 
-export default function Think() {
+export default function SyncComponent() {
 
   return (
     <>
+    
     </>
   )
 }
