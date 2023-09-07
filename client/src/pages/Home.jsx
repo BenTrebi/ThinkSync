@@ -25,7 +25,7 @@ export default function Home() {
         <MDBCardBody>
           <MDBCardTitle>New Think</MDBCardTitle>
           <MDBCardText>
-            'Replace with Button'
+            'replace this whole thing with a button once the grid is set up'
           </MDBCardText>
         </MDBCardBody>
       </MDBCard>
