@@ -1,14 +1,17 @@
 :root {
-  --primary-color: #
-  --secondary-color: #
-  --accent-color: #
-  --highlight-color: #
+  --dark-black: #292929;
+  --dark-gray: #575757;
+  --primary-green: #6DA34D;
+  --secondary-purple: #56445D;
+  --accent-color-teal: #548687;
+  --highlight-color: #C5E99B;
+  --darker-green: #8FBC94;
 }
 
 html, body {
   padding: 0;
   margin: 0;
-  background-color: #353535;
+  background-color: var(--dark-black);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -16,6 +19,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #navbar {
-  background-color: #202020;
-  border-bottom: 2px solid gray;
+  background-color: var(--secondary-purple);
+}
+
+.new-think {
+  background-color: var(--accent-color-teal);
+}
+
+.button {
+  background-color: var(--highlight-color);
+  color: black;
+}
+
+.button:hover {
+  background-color: var(--primary-green);
 }

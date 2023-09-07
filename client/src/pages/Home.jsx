@@ -56,10 +56,10 @@ export default function Home() {
           </MDBCard>
       </MDBCol>
       <MDBCol md='4'>
-        <MDBCard background='success' className='text-white mb-3'>
+        <MDBCard className='text-white mb-3 new-think'>
               <MDBCardBody>
                 <MDBCardTitle>New Think</MDBCardTitle>
-                <MDBBtn>
+                <MDBBtn className='button'>
                   Get Started
                 </MDBBtn>
               </MDBCardBody>
