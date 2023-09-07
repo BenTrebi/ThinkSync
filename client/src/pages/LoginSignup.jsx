@@ -1,6 +1,6 @@
 import React from 'react'
 import Login from '../components/Login'
-import SignUp from '../components/SignUp'
+import SignUp from '../components/Signup'
 
 export default function LoginSignup() {
   return (
