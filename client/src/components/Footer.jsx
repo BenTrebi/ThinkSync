@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function Sync() {
+
+export default function Footer() {
 
   return (
     <>
+    
     </>
   )
 }
