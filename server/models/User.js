@@ -1,20 +1,20 @@
 const { Schema, model } = require('mongoose');
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
+const { isEmail } = require('validator');
 
 const userSchema = new Schema({
-  fname: { 
+  username: { 
     type: String, 
-    required: true 
-  },
-
-  lname: {
-    type: String,
-    required: true
+    unique: true,
+    required: true,
+    trim: true
   },
 
   email: {
     type: String,
+    unique: true,
     required: true,
+    validate: [isEmail, 'invalid email']
   },
 
   password: {
@@ -34,3 +34,17 @@ userSchema.pre("save", async function(next){
 
 const User = model('User', userSchema);
 module.exports = User;
+
+/*
+REFERENCES
+username unique trim
+https://masteringjs.io/tutorials/mongoose/unique
+https://stackoverflow.com/questions/20766360/whats-the-meaning-of-trim-when-use-in-mongoose
+
+validate email
+https://stackoverflow.com/questions/18022365/mongoose-validate-email-syntax
+https://github.com/validatorjs/validator.js
+npm installed validator
+
+
+*/
