@@ -1,0 +1,26 @@
+:root {
+  --primary-color: #
+  --secondary-color: #
+  --accent-color: #
+  --highlight-color: #
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+.navbar {
+  background-color: lightgray;
+  display: flex;
+  flex: nowrap;
+}
+
+.nav-links {
+  display: block;
+  justify-content: right;
+}
+
+.nav-item {
+  margin: 4px;
+}
