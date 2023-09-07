@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react';
 import {
   MDBContainer,
   MDBNavbar,
@@ -23,9 +22,9 @@ export default function Navbar() {
   const [showBasic, setShowBasic] = useState(false);
 
   return (
-    <MDBNavbar expand='lg' light bgColor='light'>
+    <MDBNavbar id='navbar' expand='lg' dark>
       <MDBContainer fluid>
-        <MDBNavbarBrand href='#'>ThinkSync</MDBNavbarBrand>
+        <MDBNavbarBrand href='/'>ThinkSync</MDBNavbarBrand>
 
         <MDBNavbarToggler
           aria-controls='navbarSupportedContent'
@@ -37,42 +36,32 @@ export default function Navbar() {
         </MDBNavbarToggler>
 
         <MDBCollapse navbar show={showBasic}>
-          <MDBNavbarNav className='mr-auto mb-2 mb-lg-0'>
-            <MDBNavbarItem>
-              <MDBNavbarLink active aria-current='page' href='#'>
-                Home
-              </MDBNavbarLink>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
-              <MDBNavbarLink href='#'>Link</MDBNavbarLink>
-            </MDBNavbarItem>
-
-            <MDBNavbarItem>
-              <MDBDropdown>
-                <MDBDropdownToggle tag='a' className='nav-link' role='button'>
-                  Dropdown
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <MDBDropdownItem link>Action</MDBDropdownItem>
-                  <MDBDropdownItem link>Another action</MDBDropdownItem>
-                  <MDBDropdownItem link>Something else here</MDBDropdownItem>
-                </MDBDropdownMenu>
-              </MDBDropdown>
-            </MDBNavbarItem>
-
-            <MDBNavbarItem>
-              <MDBNavbarLink disabled href='#' tabIndex={-1} aria-disabled='true'>
-                Disabled
-              </MDBNavbarLink>
-            </MDBNavbarItem>
-          </MDBNavbarNav>
-
-          <form className='d-flex input-group w-auto'>
-            <input type='search' className='form-control' placeholder='Type query' aria-label='Search' />
-            <MDBBtn color='primary'>Search</MDBBtn>
-          </form>
+          <div className='d-flex justify-content-end align-items-center w-100'>
+            <ul className='navbar-nav'>
+              <li className='nav-item'>
+                <a className='nav-link' href='/'>
+                  Home
+                </a>
+              </li>
+              <li className='nav-item'>
+                <a className='nav-link' href='/think'>
+                  Think
+                </a>
+              </li>
+              <li className='nav-item'>
+                <a className='nav-link' href='/sync'>
+                  Sync
+                </a>
+              </li>
+              <li className='nav-item'>
+                <a className='nav-link' href='/loginsignup'>
+                  Login | Signup
+                </a>
+              </li>
+            </ul>
+          </div>
         </MDBCollapse>
       </MDBContainer>
     </MDBNavbar>
-  )
+  );
 }
