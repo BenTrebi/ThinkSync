@@ -1,8 +1,14 @@
 const User = require("./User");
-const Thought = require("./Thought");
+const Idea = require("./Idea");
+const Bracket = require("./Bracket");
+const Round = require("./Round");
+const Vote = require("./Vote");
 
 
 module.exports = {
   User,
-  Thought
+  Idea,
+  Bracket,
+  Round,
+  Vote
 }

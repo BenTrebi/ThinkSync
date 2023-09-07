@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const ideaSchema = new Schema(
   {
-    ideanum: {
+    ideaNum: {
       type: Number,
       required: true,
     },
@@ -13,25 +13,15 @@ const ideaSchema = new Schema(
       minLength: 1,
       maxLength: 500
     },
-
-    questionTitle: {
-      type: String,
-      required: true,
-      minLength: 1,
-      maxLength: 500
-    },
     
-    username: {
-      type: String,
+    userId: {
+      type: Schema.Types.ObjectId,
       required: true
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      get: (date) => {
-        if (date) return date.toISOString().split("T")[0];
-      }
-    },
+
+    votes: [{
+      type: Schema.Types.ObjectId
+    }],
 
   },
   {
@@ -39,6 +29,11 @@ const ideaSchema = new Schema(
     toJSON: { getters: true, virtuals: true }
   }
 );
+
+ideaSchema.virtual('voteCount').get(function() {
+  // return an object with roundNums and voteCounts
+  return this.votes.length
+})
 
 const Idea = model('Idea', ideaSchema);
 module.exports = Idea;

@@ -21,7 +21,7 @@ const userSchema = new Schema({
     type: String,
     required: true
   }
-});a
+});
 
 userSchema.method("verify", async function(pw){
   return await bcrypt.compare(pw, this.password)

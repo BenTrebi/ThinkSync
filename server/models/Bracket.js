@@ -3,13 +3,15 @@ const { Schema, model } = require('mongoose');
 const bracketSchema = new Schema(
   {
     questionTitle: {
-      ref: 'Idea',
-      type: Schema.Types.String
+      type: String,
+      required: true,
+      minLength: 1,
+      maxLength: 500
     },
 
     ideas: [{
       ref: 'Idea',
-      type: Schema.Types.Object
+      type: Schema.Types.ObjectId
     }],
 
     createdAt: {
@@ -20,8 +22,8 @@ const bracketSchema = new Schema(
       }
     },
 
-    username: {
-      type: String,
+    userId: {
+      type: Schema.Types.ObjectId,
       required: true
     },
 
