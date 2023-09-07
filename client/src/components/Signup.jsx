@@ -1,20 +1,16 @@
 import React from 'react'
+import { useState } from 'react';
 
 import {
   MDBContainer,
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarToggler,
-  MDBIcon,
-  MDBNavbarNav,
-  MDBNavbarItem,
-  MDBNavbarLink,
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
   MDBBtn,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
-  MDBCollapse,
+  MDBCol,
+  MDBRow,
+  MDBInput
 } from 'mdb-react-ui-kit';
 
 // card component: https://mdbootstrap.com/docs/standard/components/cards/
@@ -23,27 +19,26 @@ import {
 export default function Signup() {
 
   return (
-    <>
     <MDBContainer style={{ marginTop:"3%", marginBottom:"3%" }}>
-    <div className="card w-50">
-      <div className="card-body">
-        <h4>Sign Up:</h4>
-        <div className="form-outline">
-          <input type="text" id="typeTextSignUp" className="form-control" />
-          <label className="form-label" htmlFor="typeText">Username</label>
-        </div>
-        <div className="form-outline">
-          <input type="email" id="typeEmail" className="form-control" />
-          <label className="form-label" htmlFor="typeEmail">Email</label>
-        </div>
-        <div className="form-outline">
-          <input type="password" id="typePasswordSignUp" className="form-control" />
-          <label className="form-label" htmlFor="typePassword">Password</label>
-        </div>
-        <MDBBtn style={{marginTop:"2%"}}>Sign Up</MDBBtn>
-      </div>
-    </div>
+      <MDBRow>
+        <MDBCol col='6'>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle style={{color:'black'}}>Sign Up:</MDBCardTitle>
+              <MDBCardText>
+              <MDBInput label='Username' id='typeTextSignup' type='text' />
+              </MDBCardText>
+              <MDBCardText>
+              <MDBInput label='Email' id='typeEmail' type='password' />
+              </MDBCardText>
+              <MDBCardText>
+              <MDBInput label='Password' id='typePasswordSignup' type='password' />
+              </MDBCardText>
+              <MDBBtn style={{marginTop:"2%"}}>Sign Up</MDBBtn>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
     </MDBContainer>
-    </>
   )
 }

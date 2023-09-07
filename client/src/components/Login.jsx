@@ -1,46 +1,57 @@
 import React from 'react'
+import { useState } from 'react';
 
 import {
   MDBContainer,
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarToggler,
-  MDBIcon,
-  MDBNavbarNav,
-  MDBNavbarItem,
-  MDBNavbarLink,
+  MDBCard,
+  MDBCardBody,
+  MDBCardTitle,
+  MDBCardText,
   MDBBtn,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
-  MDBCollapse,
+  MDBCol,
+  MDBRow,
+  MDBInput
 } from 'mdb-react-ui-kit';
 
-// card component: https://mdbootstrap.com/docs/standard/components/cards/
+// card component: https://mdbootstrap.com/docs/react/components/cards/
 // form components: https://mdbootstrap.com/docs/standard/forms/input-fields/
 
+const defaultUser = {
+  username:"",
+  password:""
+}
 
 export default function Login() {
+  const [ loginData, setLoginState ] = useState(defaultUser)
+
+  function handleLoginChange(e) {
+    e.preventDefault();
+    setLoginState({ ...loginData, [e.target.name]: e.target.value })
+  }
+
+  function submitLogin(e) {
+    e.preventDefault()
+    console.log(loginData)
+  }
 
   return (
-    <>
-    <MDBContainer style={{marginTop:"3%", marginBottom:"3%"}}>
-    <div className="card w-50">
-      <div className="card-body">
-        <h4>Login:</h4>
-        <div className="form-outline">
-          <input type="text" id="typeText" className="form-control" />
-          <label className="form-label" htmlFor="typeText">Username</label>
-        </div>
-        <div className="form-outline">
-          <input type="password" id="typePassword" className="form-control" />
-          <label className="form-label" htmlFor="typePassword">Password</label>
-        </div>
-        <MDBBtn style={{marginTop:"2%"}}>Login</MDBBtn>
-      </div>
-    </div>
+    <MDBContainer style={{ marginTop:"3%", marginBottom:"3%" }}>
+      <MDBRow>
+        <MDBCol col='6'>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle style={{color:'black'}}>Login:</MDBCardTitle>
+              <MDBCardText>
+              <MDBInput label='Username' id='typeText' type='text' value={loginData.username} onChange={handleLoginChange} />
+              </MDBCardText>
+              <MDBCardText>
+              <MDBInput label='Password' id='typePassword' type='password' value={loginData.password} onChange={handleLoginChange} />
+              </MDBCardText>
+              <MDBBtn style={{marginTop:"2%"}} onClick={submitLogin}>Login</MDBBtn>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
     </MDBContainer>
-    </>
   )
 }
