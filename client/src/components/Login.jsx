@@ -6,7 +6,6 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
-  MDBCardText,
   MDBBtn,
   MDBCol,
   MDBRow,
@@ -41,12 +40,9 @@ export default function Login() {
           <MDBCard>
             <MDBCardBody>
               <MDBCardTitle style={{color:'black'}}>Login:</MDBCardTitle>
-              <MDBCardText>
-              <MDBInput label='Username' id='typeText' type='text' value={loginData.username} onChange={handleLoginChange} />
-              </MDBCardText>
-              <MDBCardText>
-              <MDBInput label='Password' id='typePassword' type='password' value={loginData.password} onChange={handleLoginChange} />
-              </MDBCardText>
+              <MDBInput name='username' style={{ marginTop:"3%", marginBottom:"3%" }} label='Username' id='typeText' type='text' value={loginData.username} 
+              onChange={handleLoginChange} />
+              <MDBInput name='password' style={{ marginTop:"3%", marginBottom:"3%" }} label='Password' id='typePassword' type='password' value={loginData.password} onChange={handleLoginChange} />
               <MDBBtn style={{marginTop:"2%"}} onClick={submitLogin}>Login</MDBBtn>
             </MDBCardBody>
           </MDBCard>
