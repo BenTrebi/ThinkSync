@@ -25,16 +25,19 @@ export default function Login() {
 
   return (
     <>
-    <MDBContainer>
+    <MDBContainer style={{marginTop:"3%", marginBottom:"3%"}}>
     <div className="card w-50">
       <div className="card-body">
-      <div class="form-outline">
-        <input type="text" id="typeText" className="form-control" />
-        <label className="form-label" for="typeText">Username</label>
-        <input type="password" id="typePassword" className="form-control" />
-        <label className="form-label" for="typePassword">Password</label>
-      </div>
-        <MDBBtn>Login</MDBBtn>
+        <h4>Login:</h4>
+        <div className="form-outline">
+          <input type="text" id="typeText" className="form-control" />
+          <label className="form-label" htmlFor="typeText">Username</label>
+        </div>
+        <div className="form-outline">
+          <input type="password" id="typePassword" className="form-control" />
+          <label className="form-label" htmlFor="typePassword">Password</label>
+        </div>
+        <MDBBtn style={{marginTop:"2%"}}>Login</MDBBtn>
       </div>
     </div>
     </MDBContainer>
