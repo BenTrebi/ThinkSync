@@ -8,19 +8,14 @@
 html, body {
   padding: 0;
   margin: 0;
+  background-color: #353535;
 }
 
-.navbar {
-  background-color: lightgray;
-  display: flex;
-  flex: nowrap;
+h1, h2, h3, h4, h5, h6 {
+  color: white;
 }
 
-.nav-links {
-  display: block;
-  justify-content: right;
-}
-
-.nav-item {
-  margin: 4px;
+#navbar {
+  background-color: #202020;
+  border-bottom: 2px solid gray;
 }
