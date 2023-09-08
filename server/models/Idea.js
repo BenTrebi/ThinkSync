@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const voteSchema = require = ('./Vote');
 
 const ideaSchema = new Schema(
   {
@@ -19,9 +20,15 @@ const ideaSchema = new Schema(
       required: true
     },
 
+    bracketId: {
+      type: Schema.Types.ObjectId,
+    },
+
     votes: [{
+      ref: "Vote",
       type: Schema.Types.ObjectId
     }],
+
 
   },
   {

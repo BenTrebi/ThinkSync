@@ -1,12 +1,13 @@
 const { Schema, model } = require('mongoose');
 
+
 const roundSchema = new Schema(
   {   
     roundNum: {
       type: Number
     },
 
-    ideas: [{
+    ideaId: [{
       type: Schema.Types.ObjectId,
       required: true
     }],
@@ -18,5 +19,8 @@ const roundSchema = new Schema(
   }
 );
 
-const Round = model('Round', roundSchema);
-module.exports = Round;
+// not going to have a separate table for this, will be stored in Vote
+// const Round = model('Round', roundSchema);
+// module.exports = Round;
+
+module.exports = roundSchema;
