@@ -15,7 +15,6 @@ export default function Home() {
   return (
     <>
     <MDBContainer>
-
       <MDBRow>
         <MDBCol md='12'>
           <MDBCard alignment='center' dark>
@@ -29,7 +28,9 @@ export default function Home() {
     </MDBContainer>
 
     <MDBContainer>
+
       <MDBRow>
+
         <MDBCol md='6'>
             <MDBCard className='text-white mb-3 new-think'>
               <MDBCardBody>
@@ -40,6 +41,7 @@ export default function Home() {
               </MDBCardBody>
             </MDBCard>          
         </MDBCol>
+        
         <MDBCol md='6'>
             <MDBCard className='text-white mb-3 new-think'>
               <MDBCardBody>
@@ -50,7 +52,9 @@ export default function Home() {
               </MDBCardBody>
             </MDBCard>          
         </MDBCol>
+
       </MDBRow>
+
     </MDBContainer>
       
     </>
