@@ -54,12 +54,19 @@ a:hover {
 
 .idea-button {
   background-color: var(--dark-black);
-  border: 1px solid var(--accent-color-teal);
+  border: 1px solid var(--secondary-purple);
+  color: #12b9ec;
+  box-shadow: 5px 5px 10px 1px #000000;
 }
 
 .idea-button:hover {
   background-color: var(--accent-color-teal);
-  border: 1px solid var(--secondary-purple)
+  border: 1px solid var(--secondary-purple);
+}
+
+.idea-button:focus {
+  background-color: var(--secondary-purple);
+  box-shadow: 0px 0px 15px 1px #05faf6;
 }
 
 .footer {
