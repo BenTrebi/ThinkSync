@@ -1,82 +1,71 @@
-[			{
+{"bracket":{
 	"questionTitle":"What should we do for Project 3?",
+"userId":"64fa89404753b18c9f9324ba"},
+ 
+ "ideers":[				
+ {
 	"ideaNum":"1",
 	"ideaText":"Coding Quiz",
 "userId":"64fa89404753b18c9f9324ba"},
  {
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"2",
 	"ideaText":"Library",
 "userId":"64fa89404753b18c9f9324ba"},
  	{
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"3",
 	"ideaText":"etsy clone",
 "userId":"64fa89404753b18c9f9324ba"},
  {
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"4",
 	"ideaText":"travel app - local music",
 "userId":"64fa89404753b18c9f9324ba"},
  {
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"5",
 	"ideaText":"foreign language immersion - music, movies, news, travel?",
 "userId":"64fa89404753b18c9f9324ba"},
  {
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"6",
 	"ideaText":"service department car dealership software",
 "userId":"64fa89404753b18c9f9324ba"},
  {
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"7",
 	"ideaText":"learning platform to create flashcards and small/simple notes",
 "userId":"64fa89404753b18c9f9324ba"},
  {
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"8",
 	"ideaText":"Sunflower growth tracker. Enter details like planting date, height, number of blooms, etc. Then take data to make visualizations or recommendations. Could be about more than just sunflowers.",
 "userId":"64fa89404753b18c9f9324ba"},
 	{
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"9",
 	"ideaText":"crowdfunding platform",
 "userId":"64fa89404753b18c9f9324ba"},
  	{
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"10",
 	"ideaText":"plant identifier",
 "userId":"64fa89404753b18c9f9324ba"},
  	{
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"11",
 	"ideaText":"dating apps for coders",
 "userId":"64fa89404753b18c9f9324ba"},
  	{
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"12",
 	"ideaText":"fungi identifier",
 "userId":"64fa89404753b18c9f9324ba"},
  	{
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"13",
 	"ideaText":"code snippet library",
 "userId":"64fa89404753b18c9f9324ba"},
  	{
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"14",
 	"ideaText":"moon/star/sunset tracker",
 "userId":"64fa89404753b18c9f9324ba"},
  	{
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"15",
 	"ideaText":"planet/space database",
 "userId":"64fa89404753b18c9f9324ba"},
  	{
-	"questionTitle":"What should we do for Project 3?",
 	"ideaNum":"16",
 	"ideaText":"poll making website",
 "userId":"64fa89404753b18c9f9324ba"}
  
-]
+]}
