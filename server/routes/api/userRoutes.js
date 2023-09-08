@@ -2,12 +2,12 @@ const router = require('express').Router();
 const { User } = require('../../models')
 
 // Import any controllers needed here// uncomment once auth is ready to go 
-// const { createUser, authUser, verifyUser } = require('../../controllers/userController');
+const { createUser, authUser, verifyUser } = require('../../controllers/userController');
 
-// Declare the routes that point to the controllers above // uncomment once auth is ready to go 
-// router.route('/').post(createUser);
-// router.route('/auth').post(authUser);
-// router.route('/verify').post(verifyUser);
+// Declare the routes that point to the controllers above
+router.route('/').post(createUser);
+router.route('/auth').post(authUser);
+router.route('/verify').post(verifyUser);
 
 //get all users 
 router.get("/", async(req,res)=>{
