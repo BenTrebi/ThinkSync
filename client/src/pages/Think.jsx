@@ -9,7 +9,9 @@ export default function Think() {
   return (
     <>
        <span style={{display:'flex' }}>
+        <aside>
        <SavedBrackets />
+       </aside>
       <ThinkComponent />
     </span> 
     </>
