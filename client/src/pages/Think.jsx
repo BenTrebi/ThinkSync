@@ -4,15 +4,14 @@ import SavedBrackets from '../components/SavedBrackets'
 
 
 
+
 export default function Think() {
   return (
     <>
-      <aside>
-      <SavedBrackets />
-      </aside>
-      <main>
+       <span style={{display:'flex' }}>
+       <SavedBrackets />
       <ThinkComponent />
-      </main>
+    </span> 
     </>
   )
 }
