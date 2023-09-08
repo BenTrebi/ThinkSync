@@ -26,9 +26,7 @@ export default function Footer() {
           
           &nbsp;&nbsp;
 
-          <a className='text-white' href='/'>
             ThinkSync
-          </a>
           
           &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
 
