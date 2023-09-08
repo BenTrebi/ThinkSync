@@ -13,7 +13,9 @@ import {
 
 export default function SyncComponent(prop) {
   // console.log(prop)
-  let ideaCount = prop.ideaCount;
+
+  let ideaCount = Object.keys(prop.ideas.brackets).length;
+  // console.log(ideaCount)
 
   // if amount of ideas is odd, add an extra (for the by)
   if (ideaCount % 2 !== 0) {
@@ -24,6 +26,7 @@ export default function SyncComponent(prop) {
 
   return (
     <MDBContainer>
+      <h1>{prop.ideas.title}</h1>
       <MDBRow className='d-flex flex-nowrap'>
         {ideas.map((idea, index) => (
           <MDBCol key={index} size='' className='mt-5'>
@@ -32,7 +35,7 @@ export default function SyncComponent(prop) {
                 <MDBCardBody>
                   <MDBCardTitle>idea #{index + 1}</MDBCardTitle>
                   <MDBCardText className='text-white'>
-                    ...idea text will go here...
+                    {prop.ideas.brackets[index]}
                   </MDBCardText>
                   <MDBBtn floating className='idea-button'><MDBIcon fas icon="tint" /></MDBBtn>
                 </MDBCardBody>
