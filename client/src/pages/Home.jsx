@@ -14,34 +14,45 @@ import {
 export default function Home() {
   return (
     <>
-      <MDBRow>
-            <MDBCol md='8'>
-            <MDBCard alignment='center'>
-                  <MDBCardHeader  tag="h2">About</MDBCardHeader>
-                  <MDBCardBody>
-                    <p>A one-stop-shop for all that you and your team could need to vote on ideas, make come to decisions, or just make a bracket for March Madness.</p>
-                  </MDBCardBody>
-                </MDBCard>
-            </MDBCol>
+    <MDBContainer>
 
-            <MDBCol md='4'>
-              <MDBCard className='text-white mb-3 new-think'>
-                    <MDBCardBody>
-                      <MDBCardTitle>New Think</MDBCardTitle>
-                      <MDBBtn className='button'href='/think'>
-                        Get Started
-                      </MDBBtn>
-                    </MDBCardBody>
-                </MDBCard>
-            </MDBCol>     
+      <MDBRow>
+        <MDBCol md='12'>
+          <MDBCard alignment='center' dark>
+            <MDBCardHeader  tag="h2">About</MDBCardHeader>
+            <MDBCardBody>
+              <p>A one-stop-shop for all that you and your team could need to vote on ideas, make come to decisions, or just make a bracket for March Madness.</p>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
       </MDBRow>
-     
-      {/* <div className="d-flex justify-content-start">...</div>
-      <div className="d-flex justify-content-end">...</div>
-      <div className="d-flex justify-content-center">...</div>
-      <div className="d-flex justify-content-between">...</div>
-      <div className="d-flex justify-content-around">...</div>
-      <div className="d-flex justify-content-evenly">...</div> */}
+    </MDBContainer>
+
+    <MDBContainer>
+      <MDBRow>
+        <MDBCol md='6'>
+            <MDBCard className='text-white mb-3 new-think'>
+              <MDBCardBody>
+                <MDBCardTitle>New Think</MDBCardTitle>
+                <MDBBtn className='button'href='/think'>
+                          Get Started
+                </MDBBtn>
+              </MDBCardBody>
+            </MDBCard>          
+        </MDBCol>
+        <MDBCol md='6'>
+            <MDBCard className='text-white mb-3 new-think'>
+              <MDBCardBody>
+                <MDBCardTitle>View Syncs</MDBCardTitle>
+                <MDBBtn className='button'href='/sync'>
+                          Drip Drip
+                </MDBBtn>
+              </MDBCardBody>
+            </MDBCard>          
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
+      
     </>
 
   )
