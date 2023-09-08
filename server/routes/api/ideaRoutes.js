@@ -6,24 +6,13 @@ const voteSchema = require('../../models/Vote')
 router.post("/", async (req, res) => {
   try {
     const newBracket = await Bracket.create(req.body.bracket)
-    // console.log(newBracket)
-    // console.log(req.body.bracket)
-    console.log(newBracket._id)
-    const nbid = newBracket._id
-    console.log(nbid)
-   
-    // could we just save the newbracketID to the ideas instead of saving an array of the ideas in the bracket??
-    // const newIdea = await Idea.create(req.body.ideers,{bracketId:nbid})
-    const newIdea = await Idea.create(req.body.ideers)
-    console.log(`how to I access the newIdea._id's for each idea? ${newIdea._id}`)
-    // console.log(req.body.ideers)
-    console.log(newIdea)
-    console.log(newIdea[0]._id)
+    const newIdeas = await Idea.create(req.body.ideers)
 
-/// need HELP to make this update with each newIdea._id  it works with new bracket.id, but newIdea._id is underfined... do I need to save the ids to a separate array or something?
-    const addIdea = await Bracket.findOneAndUpdate(
+    const ideaIds = newIdeas.map(idea => idea._id)
+
+    const updatedBracket = await Bracket.findOneAndUpdate(
       { _id: newBracket._id},
-      { $addToSet: { ideas: newBracket._id } },  //need to pass in idea._id here
+      { $addToSet: { ideas: { $each: ideaIds } } },  //need to pass in idea._id here
       { runValidators: true, new: true }
     );
 
@@ -33,8 +22,8 @@ router.post("/", async (req, res) => {
     //   { $addToSet: { brackets: newBracket._id } },
     //   { runValidators: true, new: true }
     // );
-
-    res.status(200).json({ result1: newBracket, result2: newIdea, result3:addIdea })
+      console.log({ bracket: updatedBracket, ideas: newIdeas })
+    res.status(200).json({ bracket: updatedBracket, ideas: newIdeas })
   } catch (err) {
     console.log(err)
   }

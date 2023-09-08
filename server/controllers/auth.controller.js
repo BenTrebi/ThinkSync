@@ -8,20 +8,21 @@ function signToken(user){
 }
 
 async function register(req) {
+  console.log("HELP!!!!!")
   let user 
-
   // use the create method on the User controller to first create the user
   try {
-    user = await create(req)
-
+    user = await create(req.body)
+    
   } catch(err){
-    if( process.env.NODE_ENV === "development") console.log(err)
+    // if( process.env.NODE_ENV === "development") 
+    console.log(err)
     throw err
   }
 
   const token = signToken(user)
 
-  const { password, ...modifiedUser } = user;
+  const { password, ...modifiedUser } = user._doc;
   return { status: "success", token, user: modifiedUser }
 }
 

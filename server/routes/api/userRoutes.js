@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models')
 
-// Import any controllers needed here
+// Import any controllers needed here// uncomment once auth is ready to go 
 const { createUser, authUser, verifyUser } = require('../../controllers/userController');
 
 // Declare the routes that point to the controllers above
@@ -11,7 +11,6 @@ router.route('/verify').post(verifyUser);
 
 //get all users 
 router.get("/", async(req,res)=>{
-  console.log('the get route was accessed')
   try{
     const result = await User.find({});
     res.status(200).json(result)
@@ -20,9 +19,8 @@ router.get("/", async(req,res)=>{
   }
 })
 
-//post new user
+//post new user// will go away once auth is ready to go 
 router.post("/", async(req, res)=> {
-  console.log("got this far")
   try{
     const newUser = await User.create(req.body)
     console.log(newUser)
