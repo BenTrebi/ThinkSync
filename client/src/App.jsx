@@ -8,6 +8,7 @@ import LoginSignup from './pages/LoginSignup'
 import Sync from './pages/Sync'
 import Think from './pages/Think'
 import Header from './components/Header'
+import Footer from './components/Footer'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +24,7 @@ function App() {
           <Route path='/think' element={<Think />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </>
   )
 }
