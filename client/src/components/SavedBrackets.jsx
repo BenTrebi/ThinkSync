@@ -5,10 +5,8 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
-  MDBBtn,
   MDBCol,
   MDBRow,
-  MDBInput
 } from 'mdb-react-ui-kit';
 
 export default function SavedBrackets() {
@@ -20,7 +18,8 @@ export default function SavedBrackets() {
         <MDBCol col='2'>
           <MDBCard>
             <MDBCardBody>
-            <MDBCardTitle style={{color:'black'}}>Past Brackets:</MDBCardTitle>
+            <MDBCardTitle style={{color:'black'}}>Saved Brackets:</MDBCardTitle>
+            
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
