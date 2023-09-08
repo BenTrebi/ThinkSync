@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const roundSchema = require = ('./Round'); 
 
 const voteSchema = new Schema(
   {    
@@ -13,6 +14,7 @@ const voteSchema = new Schema(
     },
 
     roundId: {
+      ref: 'Round',
       type: Schema.Types.ObjectId,
       required: true
     },
@@ -23,6 +25,8 @@ const voteSchema = new Schema(
     toJSON: { getters: true, virtuals: true }
   }
 );
+// not going to have a separate table for this, will be stored in Idea
+// const Vote = model('Vote', voteSchema);
+//module.exports = Vote;
 
-const Vote = model('Vote', voteSchema);
-module.exports = Vote;
+module.exports = voteSchema;
