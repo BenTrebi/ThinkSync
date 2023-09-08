@@ -24,7 +24,16 @@ export default function Navbar() {
   return (
     <MDBNavbar id='navbar' expand='lg' dark>
       <MDBContainer fluid>
-        <MDBNavbarBrand href='/'>ThinkSync</MDBNavbarBrand>
+        <MDBNavbarBrand href='/'>
+          <img 
+            src='./assets/logo.png'
+            height='40'
+            alt=''
+            loading='lazy'
+            className='logo'
+          />
+          ThinkSync
+        </MDBNavbarBrand>
 
         <MDBNavbarToggler
           aria-controls='navbarSupportedContent'

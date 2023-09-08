@@ -18,8 +18,16 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
+a:hover {
+  color: var(--highlight-color)
+}
+
 #navbar {
   background-color: var(--secondary-purple);
+}
+
+.logo {
+  margin: 0;
 }
 
 .new-think {
@@ -41,4 +49,12 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer {
   background-color: var(--dark-gray);
+}
+
+.footer-link {
+  color: white;
+}
+
+.footer-link:hover {
+  color: var(--highlight-color)
 }
