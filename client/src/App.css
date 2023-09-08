@@ -47,6 +47,21 @@ a:hover {
   background-color: var(--primary-green);
 }
 
+.idea-bracket {
+  border-radius: 1em;
+  filter: drop-shadow(0px 0px 6px #000000);
+}
+
+.idea-button {
+  background-color: var(--dark-black);
+  border: 1px solid var(--accent-color-teal);
+}
+
+.idea-button:hover {
+  background-color: var(--accent-color-teal);
+  border: 1px solid var(--secondary-purple)
+}
+
 .footer {
   background-color: var(--dark-gray);
 }

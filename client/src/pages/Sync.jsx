@@ -1,9 +1,10 @@
 import React from 'react'
+import SyncComponent from '../components/SyncComponent'
 
 export default function Sync() {
   return (
     <>
-      <h1>Sync page</h1>
+      <SyncComponent ideaCount={6}/>
     </>
   )
 }
