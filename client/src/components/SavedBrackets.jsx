@@ -16,9 +16,9 @@ export default function SavedBrackets() {
     <MDBContainer style={{ marginTop:"3%", marginBottom:"3%" }}>
       <MDBRow>
         <MDBCol col='2'>
-          <MDBCard>
+          <MDBCard className='bg-dark text-white'>
             <MDBCardBody>
-            <MDBCardTitle style={{color:'black'}}>Saved Brackets:</MDBCardTitle>
+            <MDBCardTitle className='text-white'>Saved Brackets:</MDBCardTitle>
             
             </MDBCardBody>
           </MDBCard>

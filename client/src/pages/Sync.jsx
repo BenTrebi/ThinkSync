@@ -14,6 +14,7 @@ export default function Sync() {
             "This is the fourth idea",
             "This is the fifth idea",
             "This is the sixth idea",
+            "This is the seventh idea",
           ]
         }
       }/>

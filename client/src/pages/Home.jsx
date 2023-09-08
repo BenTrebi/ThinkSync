@@ -14,11 +14,11 @@ import {
 export default function Home() {
   return (
     <>
-    <MDBContainer>
+    <MDBContainer className='mt-5'>
 
       <MDBRow>
         <MDBCol md='12'>
-          <MDBCard alignment='center' dark>
+          <MDBCard alignment='center' className='bg-dark text-white'>
             <MDBCardHeader  tag="h2">About</MDBCardHeader>
             <MDBCardBody>
               <p>A one-stop-shop for all that you and your team could need to vote on ideas, make come to decisions, or just make a bracket for March Madness.</p>
@@ -28,7 +28,7 @@ export default function Home() {
       </MDBRow>
     </MDBContainer>
 
-    <MDBContainer>
+    <MDBContainer className='mt-4'>
       <MDBRow>
         <MDBCol md='6'>
             <MDBCard className='text-white mb-3 new-think'>

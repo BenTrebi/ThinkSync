@@ -56,12 +56,12 @@ export default function Signup() {
     <MDBContainer style={{ marginTop:"3%", marginBottom:"3%" }}>
       <MDBRow>
         <MDBCol col='6'>
-          <MDBCard>
+          <MDBCard className='bg-dark'>
             <MDBCardBody>
-              <MDBCardTitle style={{color:'black'}}>Sign Up:</MDBCardTitle>
-              <MDBInput name='username' style={{ marginTop:"3%", marginBottom:"3%" }} label='Username' id='typeTextSignup' type='text' value={signUpData.username} onChange={handleSignUpChange}/>
-              <MDBInput name='email' style={{ marginTop:"3%", marginBottom:"3%" }} label='Email' id='typeEmail' type='email' value={signUpData.email} onChange={handleSignUpChange} />         
-              <MDBInput name='password' style={{ marginTop:"3%", marginBottom:"3%" }} label='Password' id='typePasswordSignup' type='password' value={signUpData.password} onChange={handleSignUpChange} />         
+              <MDBCardTitle>Sign Up:</MDBCardTitle>
+              <MDBInput name='username' style={{ marginTop:"3%", marginBottom:"3%" }} contrast label='Username' id='typeTextSignup' type='text' value={signUpData.username} onChange={handleSignUpChange}/>
+              <MDBInput name='email' style={{ marginTop:"3%", marginBottom:"3%" }} contrast label='Email' id='typeEmail' type='email' value={signUpData.email} onChange={handleSignUpChange} />         
+              <MDBInput name='password' style={{ marginTop:"3%", marginBottom:"3%" }} contrast label='Password' id='typePasswordSignup' type='password' value={signUpData.password} onChange={handleSignUpChange} />         
               <MDBBtn style={{marginTop:"2%"}} onClick={submitSignUp}>Sign Up Now</MDBBtn>
             </MDBCardBody>
           </MDBCard>

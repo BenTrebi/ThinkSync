@@ -11,7 +11,8 @@ import {
   MDBRow,
   MDBInput,
   MDBBtnGroup,
-  MDBInputGroup
+  MDBInputGroup,
+  MDBIcon
 } from 'mdb-react-ui-kit';
 
 const thinkData = {
@@ -31,35 +32,35 @@ export default function ThinkComponent() {
     <MDBContainer style={{ marginTop:"3%", marginBottom:"3%" }}>
       <MDBRow>
         <MDBCol col='6'>
-          <MDBCard>
+          <MDBCard className='bg-dark'>
             <MDBCardBody>
-            <MDBCardTitle style={{color:'black'}}>Create a Bracket:</MDBCardTitle>
-            <MDBInput name='Title' style={{ marginTop:"3%", marginBottom:"3%" }} label='Title/Question' id='titleQuestion' type='text' />
+            <MDBCardTitle>Create a Bracket:</MDBCardTitle>
+            <MDBInput contrast name='Title' style={{ marginTop:"3%", marginBottom:"3%" }} label='Title/Question' id='titleQuestion' type='text' />
             <MDBInputGroup style={{marginTop:"1%", marginBottom:"1%"}}>
-            <MDBInput name='Choice' label='Choice' id='Choice' type='text' />
-            <MDBBtn class="btn btn-primary" type="button" id="button-addon1">
-               Delete
+            <MDBInput contrast name='Choice' label='Choice' id='Choice' type='text' />
+            <MDBBtn className='btn-danger' id="button-addon1">
+              <MDBIcon fas icon="backspace" />
             </MDBBtn>
             </MDBInputGroup>
             <MDBInputGroup style={{marginTop:"1%", marginBottom:"1%"}}>
-            <MDBInput name='Choice' label='Choice' id='Choice' type='text' />
-            <MDBBtn class="btn btn-primary" type="button" id="button-addon1">
-               Delete
+            <MDBInput contrast name='Choice' label='Choice' id='Choice' type='text' />
+            <MDBBtn className='btn-danger' id="button-addon1">
+              <MDBIcon fas icon="backspace" />
             </MDBBtn>
             </MDBInputGroup>
             <MDBInputGroup style={{marginTop:"1%", marginBottom:"1%"}}>
-            <MDBInput name='Choice' label='Choice' id='Choice' type='text' />
-            <MDBBtn class="btn btn-primary" type="button" id="button-addon1">
-               Delete
+            <MDBInput contrast name='Choice' label='Choice' id='Choice' type='text' />
+            <MDBBtn className='btn-danger' id="button-addon1">
+              <MDBIcon fas icon="backspace" />
             </MDBBtn>
             </MDBInputGroup>
             <MDBInputGroup style={{marginTop:"1%", marginBottom:"1%"}}>
-            <MDBInput name='Choice' label='Choice' id='Choice' type='text' />
-            <MDBBtn class="btn btn-primary" type="button" id="button-addon1">
-               Delete
+            <MDBInput contrast name='Choice' label='Choice' id='Choice' type='text' />
+            <MDBBtn className='btn-danger' id="button-addon1">
+              <MDBIcon fas icon="backspace" />
             </MDBBtn>
             </MDBInputGroup>
-            <MDBBtn style={{marginTop:"2%", marginRight: "80%"}}>Add Choice</MDBBtn>
+            <MDBBtn className='button' style={{marginTop:"2%", marginRight: "80%"}}>Add Choice</MDBBtn>
             <MDBBtn style={{marginTop:"2%"}}>Submit</MDBBtn>
             </MDBCardBody>
           </MDBCard>
