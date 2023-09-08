@@ -8,7 +8,7 @@ require("dotenv").config()
 async function createUser(req, res){
   try {
     const user = await User.create(req.body)
-    const { password, ...modifiedUser } = user;
+    const { password, ...modifiedUser } = user._doc;
 
 
     // create the token that will be attached to the cookie
@@ -22,7 +22,7 @@ async function createUser(req, res){
     console.log(err.message)
     return res.status(400).json({ status: "error", msg: 'Error creating user: ${err.message}'})
   }
-} 7
+} 
 
 
 async function authUser(req, res){
