@@ -20,6 +20,11 @@ export default function SyncComponent(prop) {
   // if amount of ideas is odd, add an extra (for the by)
   if (ideaCount % 2 !== 0) {
     ideaCount++;
+    // To-Do: Create function to call here for modifying contents of last element in array to have the title "by", disable the button and automatically send it's pair on to the next round, etc.
+    // ex:
+    //    function byModification() {
+    //      [code for modifying last element in array goes here]
+    //    }
   }
 
   const ideas = Array.from({ length: ideaCount })
