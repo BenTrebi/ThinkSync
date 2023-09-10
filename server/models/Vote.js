@@ -13,11 +13,16 @@ const voteSchema = new Schema(
       required: true
     },
 
-    roundId: {
-      ref: 'Round',
-      type: Schema.Types.ObjectId,
-      required: true
+    roundNum: {
+      type: Number,
+      required: true,
     },
+
+    // roundId: {
+    //   ref: 'Round',
+    //   type: Schema.Types.ObjectId,
+    //   required: true
+    // },
 
   },
   {

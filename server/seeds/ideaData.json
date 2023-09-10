@@ -1,71 +1,87 @@
-{"bracket":{
-	"questionTitle":"What should we do for Project 3?",
-"userId":"64fa89404753b18c9f9324ba"},
- 
- "ideers":[				
- {
-	"ideaNum":"1",
-	"ideaText":"Coding Quiz",
-"userId":"64fa89404753b18c9f9324ba"},
- {
-	"ideaNum":"2",
-	"ideaText":"Library",
-"userId":"64fa89404753b18c9f9324ba"},
- 	{
-	"ideaNum":"3",
-	"ideaText":"etsy clone",
-"userId":"64fa89404753b18c9f9324ba"},
- {
-	"ideaNum":"4",
-	"ideaText":"travel app - local music",
-"userId":"64fa89404753b18c9f9324ba"},
- {
-	"ideaNum":"5",
-	"ideaText":"foreign language immersion - music, movies, news, travel?",
-"userId":"64fa89404753b18c9f9324ba"},
- {
-	"ideaNum":"6",
-	"ideaText":"service department car dealership software",
-"userId":"64fa89404753b18c9f9324ba"},
- {
-	"ideaNum":"7",
-	"ideaText":"learning platform to create flashcards and small/simple notes",
-"userId":"64fa89404753b18c9f9324ba"},
- {
-	"ideaNum":"8",
-	"ideaText":"Sunflower growth tracker. Enter details like planting date, height, number of blooms, etc. Then take data to make visualizations or recommendations. Could be about more than just sunflowers.",
-"userId":"64fa89404753b18c9f9324ba"},
-	{
-	"ideaNum":"9",
-	"ideaText":"crowdfunding platform",
-"userId":"64fa89404753b18c9f9324ba"},
- 	{
-	"ideaNum":"10",
-	"ideaText":"plant identifier",
-"userId":"64fa89404753b18c9f9324ba"},
- 	{
-	"ideaNum":"11",
-	"ideaText":"dating apps for coders",
-"userId":"64fa89404753b18c9f9324ba"},
- 	{
-	"ideaNum":"12",
-	"ideaText":"fungi identifier",
-"userId":"64fa89404753b18c9f9324ba"},
- 	{
-	"ideaNum":"13",
-	"ideaText":"code snippet library",
-"userId":"64fa89404753b18c9f9324ba"},
- 	{
-	"ideaNum":"14",
-	"ideaText":"moon/star/sunset tracker",
-"userId":"64fa89404753b18c9f9324ba"},
- 	{
-	"ideaNum":"15",
-	"ideaText":"planet/space database",
-"userId":"64fa89404753b18c9f9324ba"},
- 	{
-	"ideaNum":"16",
-	"ideaText":"poll making website",
-"userId":"64fa89404753b18c9f9324ba"}
- 
-]}
+{
+	"bracket": {
+		"questionTitle": "What should we do for Project 3?",
+		"userId": "<<copy_a_userId_here>>"
+	},
+	"ideers": [
+		{
+			"ideaNum": "1",
+			"ideaText": "Coding Quiz",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "2",
+			"ideaText": "Library",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "3",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "4",
+			"ideaText": "travel app - local music",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "5",
+			"ideaText": "foreign language immersion - music, movies, news, travel?",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "6",
+			"ideaText": "service department car dealership software",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "7",
+			"ideaText": "learning platform to create flashcards and small/simple notes",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "8",
+			"ideaText": "Sunflower growth tracker. Enter details like planting date, height, number of blooms, etc. Then take data to make visualizations or recommendations. Could be about more than just sunflowers.",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "9",
+			"ideaText": "crowdfunding platform",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "10",
+			"ideaText": "plant identifier",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "11",
+			"ideaText": "dating apps for coders",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "12",
+			"ideaText": "fungi identifier",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "13",
+			"ideaText": "code snippet library",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "14",
+			"ideaText": "moon/star/sunset tracker",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "15",
+			"ideaText": "planet/space database",
+			"userId": "<<copy_a_userId_here>>"
+		},
+		{
+			"ideaNum": "16",
+			"ideaText": "poll making website",
+			"userId": "<<copy_a_userId_here>>"
+		}
+	]
+}
