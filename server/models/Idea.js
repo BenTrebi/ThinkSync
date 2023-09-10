@@ -20,15 +20,11 @@ const ideaSchema = new Schema(
       required: true
     },
 
-    bracketId: {
-      type: Schema.Types.ObjectId,
-    },
+    // bracketId: {
+    //   type: Schema.Types.ObjectId,
+    // },
 
-    votes: [{
-      ref: "Vote",
-      type: Schema.Types.ObjectId
-    }],
-
+    votes: [voteSchema],
 
   },
   {
