@@ -28,9 +28,24 @@ export default function Login() {
     setLoginState({ ...loginData, [e.target.name]: e.target.value })
   }
 
-  function submitLogin(e) {
+  async function submitLogin(e) {
     e.preventDefault()
     console.log(loginData)
+
+    const query = await fetch("/api/auth/login", {
+      method: "POST",
+      body: JSON.stringify(loginData),
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+
+      const result = await query.json()
+      console.log(result)
+      if( result.status === "success" && result.payload ){
+        window.location.href = "/think"
+      }
+      // console.log(result)
   }
 
   return (
