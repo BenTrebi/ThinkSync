@@ -148,7 +148,7 @@ export default function SyncComponent() {
       The decision-log outputs vote for each decision of each round */}
       <div className='decision-log'>
         <h5 className='mt-4'>{`Round ${round}`}</h5>
-        {winners.map((winnerIndex, index) => (
+        {winners.length > 0 && winners.map((winnerIndex, index) => (
             <div key={index}>
               <p style={{ fontFamily: 'monospace', fontSize: '0.8em'}}>
                 Decision <strong style={{ color: 'darkgray' }}>{index + 1}</strong> vote: {pairedIdeas[index][winnerIndex].ideaText}
