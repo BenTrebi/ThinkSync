@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import {
   MDBContainer,
   MDBRow,
@@ -14,35 +15,65 @@ import {
 export default function SyncComponent(prop) {
   // console.log(prop)
 
-  let ideaCount = Object.keys(prop.ideas.brackets).length;
-  // console.log(ideaCount)
+  const [pairs, setPairs] = useState([]);
+  const [round, setRound] = useState(1);
+  const [winners, setWinners] = useState([]);
 
-  // if amount of ideas is odd, add an extra (for the by)
-  if (ideaCount % 2 !== 0) {
-    ideaCount++;
-  }
+  // pair ideas together
+  const pairIdeas = (ideasArray) => {
+    const pairedIdeas = [];
+    for (let i = 0; i < ideasArray.length; i += 2) {
+      pairedIdeas.push([ideasArray[i], ideasArray[i + 1]]);
+    }
+    return pairedIdeas;
+  };
 
-  const ideas = Array.from({ length: ideaCount })
+  const handleWinnerClick = (index, ideaIndex) => {
+    console.log(`handleWinnerClick called for Bracket ${index + 1} (pairedIdeas[${index}]) with winner being option ${ideaIndex + 1} (pairedIdeas[${index}][${ideaIndex}])`);
+  };
+  
+  const pairedIdeas = pairIdeas(prop.brackets.ideas);
 
   return (
     <MDBContainer>
-      <h1>{prop.ideas.title}</h1>
+      <h2 className='sync-title'>{prop.brackets.title}</h2>
       <MDBRow className='d-flex flex-nowrap'>
-        {ideas.map((idea, index) => (
+        {pairedIdeas.map((pair, index) => (
           <MDBCol key={index} size='' className='mt-5'>
             <div className='idea-bracket'>
-              <MDBCard className='idea-bracket bg-dark'>
-                <MDBCardBody>
-                  <MDBCardTitle>idea #{index + 1}</MDBCardTitle>
-                  <MDBCardText className='text-white'>
-                    {prop.ideas.brackets[index]}
-                  </MDBCardText>
-                  <MDBBtn floating className='idea-button'><MDBIcon fas icon="tint" /></MDBBtn>
+              <MDBCard className='idea-bracket-card bg-dark'>
+                <MDBCardTitle className='text-center mt-2'>Bracket {index + 1}</MDBCardTitle>
+                <MDBCardBody className='idea-bracket-pair-container d-flex justify-content-center flex-nowrap'>
+                  <div className='idea-bracket-pair d-flex flex-wrap justify-content-center align-items-end'>
+                    <MDBCardText className='idea-bracket-text text-white'>
+                      {pair[0]}
+                    </MDBCardText>
+
+                    <MDBBtn floating 
+                            className='idea-button' 
+                            onClick={() => handleWinnerClick(index, 0)}
+                            disabled={false} // disable other button of pair after winner of pair chosen
+
+                  ><MDBIcon fas icon="tint" /></MDBBtn>
+                  </div>
+                  <div className='idea-bracket-pair d-flex flex-wrap justify-content-center align-items-end'>
+                    <MDBCardText className='idea-bracket-text text-white d-flex'>
+                      {pair[1]}
+                    </MDBCardText>
+
+                    <MDBBtn floating 
+                            className='idea-button' 
+                            onClick={() => handleWinnerClick(index, 1)}
+                            disabled={false} // disable other button of pair after winner of pair chosen
+                                          // To-Do: Create function to manage `isDisabled` state for button.
+
+                  ><MDBIcon fas icon="tint" /></MDBBtn>
+                  </div>
                 </MDBCardBody>
               </MDBCard>
             </div>
           </MDBCol>
-        ))}
+          ))}
       </MDBRow>
     </MDBContainer>
   )
