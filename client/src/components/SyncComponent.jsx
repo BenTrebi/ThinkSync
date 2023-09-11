@@ -29,7 +29,7 @@ export default function SyncComponent(prop) {
   };
 
   const handleWinnerClick = (index, ideaIndex) => {
-    console.log(`handleWinnerClick called for pair ${index} with winner being pair index: ${ideaIndex}`);
+    console.log(`handleWinnerClick called for Bracket ${index + 1} (pairedIdeas[${index}]) with winner being option ${ideaIndex + 1} (pairedIdeas[${index}][${ideaIndex}])`);
   };
   
   const pairedIdeas = pairIdeas(prop.brackets.ideas);
@@ -43,7 +43,7 @@ export default function SyncComponent(prop) {
             <div className='idea-bracket'>
               <MDBCard className='idea-bracket-card bg-dark'>
                 <MDBCardTitle className='text-center mt-2'>Bracket {index + 1}</MDBCardTitle>
-                <MDBCardBody className='idea-bracket-pair-container d-flex justify-content-center'>
+                <MDBCardBody className='idea-bracket-pair-container d-flex justify-content-center flex-nowrap'>
                   <div className='idea-bracket-pair d-flex flex-wrap justify-content-center align-items-end'>
                     <MDBCardText className='idea-bracket-text text-white'>
                       {pair[0]}
