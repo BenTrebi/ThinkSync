@@ -47,7 +47,7 @@ export default function Home() {
               <MDBCardBody>
                 <MDBCardTitle>View Syncs</MDBCardTitle>
                 <MDBBtn className='button'href='/sync'>
-                          Drip Drip
+                          change text
                 </MDBBtn>
               </MDBCardBody>
             </MDBCard>          
@@ -57,6 +57,8 @@ export default function Home() {
 
     </MDBContainer>
       
+
+    
     </>
 
   )
