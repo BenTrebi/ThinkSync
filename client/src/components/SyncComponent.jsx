@@ -16,7 +16,7 @@ export default function SyncComponent() {
 
   const [pairs, setPairs] = useState([]);
   const [round, setRound] = useState(1);
-  const [winners, setWinners] = useState([]);
+  const [winners, setWinners] = useState({});
   const [originBracket, setOriginBracket] = useState(null);
 
   // This is the variable for which bracket to fetch from Mongo by Object Id ("_id") using GET "/:id" route.
@@ -37,7 +37,14 @@ export default function SyncComponent() {
 
     // here we call the function immediately and the originBracket is no longer null (state change)
     fetchData(bracketId);
+
   }, []);
+
+  useEffect(() => {
+    if (winners.length === 0) {
+      setRound(1);
+    }
+  }, [winners]);
 
   // This function queries the database for the bracketData by ID, it is called above ^.
   async function fetchBracket(bracketId) {
@@ -61,8 +68,7 @@ export default function SyncComponent() {
 
   // reset the entire bracket
   const handleReset = () => {
-    setWinners([])
-    setRound(1)
+    setWinners({})
   }
 
   // This function will be called to post results of finished round to database.
@@ -71,14 +77,15 @@ export default function SyncComponent() {
   }
 
   const handleWinnerClick = (index, ideaIndex) => {
-    // To-Do: implement check if entry already added to fix duplicate entries to updatedWinners array.
-    if (winners[index] !== ideaIndex) {
-      const updatedWinners = [...winners];
-      updatedWinners[index] = ideaIndex;
-      setWinners(updatedWinners);
+    const updatedWinners = {...winners};
 
-      console.log('Updated Winners:', updatedWinners);
-    }
+    updatedWinners[index] = {
+      decision: index + 1,
+      vote: pairedIdeas[index][ideaIndex].ideaText,
+    };
+
+    setWinners(updatedWinners);
+    console.log(updatedWinners)
 
     // To-Do: implement check here if all decision divs have a winner selected..
 
@@ -117,6 +124,7 @@ export default function SyncComponent() {
                             className='decision-button' 
                             onClick={() => handleWinnerClick(index, 0)}
                             disabled={winners[index] !== undefined}
+
                   ><MDBIcon fas icon="tint" /></MDBBtn>
                   </div>
                   <div className='decision-pair-item d-flex flex-wrap justify-content-center align-items-end'>
@@ -147,15 +155,15 @@ export default function SyncComponent() {
       {/* display winner data (mainly for development debugging)
       The decision-log outputs vote for each decision of each round */}
       <div className='decision-log'>
-        <h5 className='mt-4'>{`Round ${round}`}</h5>
-        {winners.length > 0 && winners.map((winnerIndex, index) => (
-            <div key={index}>
-              <p style={{ fontFamily: 'monospace', fontSize: '0.8em'}}>
-                Decision <strong style={{ color: 'darkgray' }}>{index + 1}</strong> vote: {pairedIdeas[index][winnerIndex].ideaText}
-              </p>
-            </div>
-        ))}
-      </div>
+      <h5 className='mt-4'>{`Round ${round}`}</h5>
+      {Object.keys(winners).map((decisionIndex, index) => (
+          <div key={index}>
+            <p style={{ fontFamily: 'monospace', fontSize: '0.8em'}}>
+              Decision <strong style={{ color: 'darkgray' }}>{winners[decisionIndex].decision}</strong> vote: {winners[decisionIndex].vote}
+            </p>
+          </div>
+      ))}
+    </div>
 
     </MDBContainer>
   )
