@@ -102,7 +102,7 @@ export default function SyncComponent() {
           <MDBCol key={index} size='' className='mt-5'>
             <div className='decision'>
               <MDBCard className='decision-card bg-dark'>
-                <MDBCardTitle className='text-center mt-2'>Decision {index + 1}</MDBCardTitle>
+                <MDBCardTitle className='text-center mt-2' style={{ color: 'darkgray', fontSize: '1em' }}>Decision <span style={{ color: 'white' }}>{index + 1}</span></MDBCardTitle>
                 <MDBCardBody className='decision-pair-container d-flex justify-content-center flex-nowrap'>
                   <div className='decision-pair-item d-flex flex-wrap justify-content-center align-items-end'>
 
