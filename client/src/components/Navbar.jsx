@@ -16,10 +16,12 @@ import {
   MDBCollapse,
 } from 'mdb-react-ui-kit';
 
-export default function Navbar() {
+export default function Navbar(loggedIn) {
   // https://mdbootstrap.com/docs/react/navigation/navbar/
 
   const [showBasic, setShowBasic] = useState(false);
+
+  
 
   return (
     <MDBNavbar id='navbar' expand='lg' dark>
@@ -67,6 +69,17 @@ export default function Navbar() {
                   Login | Signup
                 </a>
               </li>
+              {loggedIn ? (
+                <li className='nav-item'>
+                  <a className='nav-link' href='/logout'>
+                    Logout
+                  </a>
+                </li>
+              ) : (
+              <li className='nav-item'>
+                <a className='nav-link'>
+                </a>
+              </li>)}
             </ul>
           </div>
         </MDBCollapse>
