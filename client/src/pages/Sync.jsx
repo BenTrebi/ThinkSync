@@ -5,7 +5,7 @@ export default function Sync() {
 
   const objFromThinkComponent = {
       title: "How should we do this particular thing?",
-      brackets: [
+      ideas: [
         "Coding Quiz",
         "Something about libraries",
         "etsy clone",
@@ -22,7 +22,7 @@ export default function Sync() {
 
   return (
     <>
-      <SyncComponent ideas={objFromThinkComponent}/>
+      <SyncComponent brackets={objFromThinkComponent}/>
     </>
   )
 }

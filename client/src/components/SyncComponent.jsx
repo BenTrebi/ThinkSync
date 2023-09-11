@@ -32,11 +32,11 @@ export default function SyncComponent(prop) {
     console.log(`handleWinnerClick called for pair ${index} with winner being pair index: ${ideaIndex}`);
   };
   
-  const pairedIdeas = pairIdeas(prop.ideas.brackets);
+  const pairedIdeas = pairIdeas(prop.brackets.ideas);
 
   return (
     <MDBContainer>
-      <h2 className='sync-title'>{prop.ideas.title}</h2>
+      <h2 className='sync-title'>{prop.brackets.title}</h2>
       <MDBRow className='d-flex flex-nowrap'>
         {pairedIdeas.map((pair, index) => (
           <MDBCol key={index} size='' className='mt-5'>
