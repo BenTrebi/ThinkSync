@@ -53,7 +53,7 @@ export default function ThinkComponent() {
     <MDBContainer style={{ marginTop:"3%", marginBottom:"3%" }}>
       <MDBRow>
         <MDBCol col='6'>
-          <MDBCard>
+          <MDBCard className='bg-dark'>
             <MDBCardBody>
             <MDBCardTitle style={{color:'black'}}>Create a Bracket:</MDBCardTitle>
             <MDBInput name='Title' style={{ marginTop:"3%", marginBottom:"3%" }} label='Title/Question' id='titleQuestion' type='text' />

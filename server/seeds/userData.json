@@ -1,36 +1,32 @@
-
-[{
-"username":"SK Whirly",
-"email":"skwhirly@email.com",
-"password":"password"
-},
+[
 	{
-	"username":"Donna Worry",
-	"email":"dworry@email.com",
-	"password":"password"
-}
-,
-{
-	"username":"Bea Happy",
-	"email":"bhappy@email.com",
-	"password":"password"
-}
-,
-{
-	"username":"PJ Devon",
-	"email":"pjdevon@email.com",
-	"password":"password"
-}
-,
-{
-	"username":"Berry LaVoid",
-	"email":"blavoid@email.com",
-	"password":"password"
-}
-,
-{
-	"username":"Jason G",
-	"email":"jasong@email.com",
-	"password":"password"
-}
- ]
+		"username": "SK Whirly",
+		"email": "skwhirly@email.com",
+		"password": "password"
+	},
+	{
+		"username": "Donna Worry",
+		"email": "dworry@email.com",
+		"password": "password"
+	},
+	{
+		"username": "Bea Happy",
+		"email": "bhappy@email.com",
+		"password": "password"
+	},
+	{
+		"username": "PJ Devon",
+		"email": "pjdevon@email.com",
+		"password": "password"
+	},
+	{
+		"username": "Berry LaVoid",
+		"email": "blavoid@email.com",
+		"password": "password"
+	},
+	{
+		"username": "Jason G",
+		"email": "jasong@email.com",
+		"password": "password"
+	}
+]
