@@ -19,6 +19,11 @@ export default function SyncComponent(prop) {
   const [round, setRound] = useState(1);
   const [winners, setWinners] = useState([]);
 
+  async function fetchRound(roundNum) {
+    // fetch GET for /api/brackets/_id here:
+    const roundData = await fetch('/api/brackets/_id') // object _id goes here...
+  }
+
   // pair ideas together
   const pairIdeas = (ideasArray) => {
     const pairedIdeas = [];
@@ -37,32 +42,32 @@ export default function SyncComponent(prop) {
   return (
     <MDBContainer>
       <h2 className='sync-title'>{prop.brackets.title}</h2>
-      <MDBRow className='d-flex flex-nowrap'>
+      <MDBRow className='round d-flex flex-nowrap'>
         {pairedIdeas.map((pair, index) => (
           <MDBCol key={index} size='' className='mt-5'>
-            <div className='idea-bracket'>
-              <MDBCard className='idea-bracket-card bg-dark'>
-                <MDBCardTitle className='text-center mt-2'>Bracket {index + 1}</MDBCardTitle>
-                <MDBCardBody className='idea-bracket-pair-container d-flex justify-content-center flex-nowrap'>
-                  <div className='idea-bracket-pair d-flex flex-wrap justify-content-center align-items-end'>
-                    <MDBCardText className='idea-bracket-text text-white'>
+            <div className='decision'>
+              <MDBCard className='decision-card bg-dark'>
+                <MDBCardTitle className='text-center mt-2'>Decision {index + 1}</MDBCardTitle>
+                <MDBCardBody className='decision-pair-container d-flex justify-content-center flex-nowrap'>
+                  <div className='decision-pair d-flex flex-wrap justify-content-center align-items-end'>
+                    <MDBCardText className='idea-text text-white'>
                       {pair[0]}
                     </MDBCardText>
 
                     <MDBBtn floating 
-                            className='idea-button' 
+                            className='decision-button' 
                             onClick={() => handleWinnerClick(index, 0)}
                             disabled={false} // disable other button of pair after winner of pair chosen
 
                   ><MDBIcon fas icon="tint" /></MDBBtn>
                   </div>
-                  <div className='idea-bracket-pair d-flex flex-wrap justify-content-center align-items-end'>
-                    <MDBCardText className='idea-bracket-text text-white d-flex'>
+                  <div className='decision-pair d-flex flex-wrap justify-content-center align-items-end'>
+                    <MDBCardText className='idea-text text-white d-flex'>
                       {pair[1]}
                     </MDBCardText>
 
                     <MDBBtn floating 
-                            className='idea-button' 
+                            className='decision-button' 
                             onClick={() => handleWinnerClick(index, 1)}
                             disabled={false} // disable other button of pair after winner of pair chosen
                                           // To-Do: Create function to manage `isDisabled` state for button.
