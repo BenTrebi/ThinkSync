@@ -8,17 +8,21 @@ import {
   MDBCardBody,
   MDBCardTitle,
   MDBCardText,
+  MDBCardImage,
   MDBBtn
 } from 'mdb-react-ui-kit';
+import groupPhoto from '../assets/images/groupPhoto.jpg'
 
 export default function Home() {
   return (
     <>
+    
     <MDBContainer className='mt-5'>
-
+  
       <MDBRow>
         <MDBCol md='12'>
           <MDBCard alignment='center' className='bg-dark text-white'>
+          <MDBCardImage src={ groupPhoto } position='top' alt='...' />
             <MDBCardHeader  tag="h2">About</MDBCardHeader>
             <MDBCardBody>
               <p>A one-stop-shop for all that you and your team could need to vote on ideas, make come to decisions, or just make a bracket for March Madness.</p>
@@ -26,6 +30,7 @@ export default function Home() {
           </MDBCard>
         </MDBCol>
       </MDBRow>
+
     </MDBContainer>
 
     <MDBContainer className='mt-4'>
