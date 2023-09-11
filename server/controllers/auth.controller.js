@@ -8,7 +8,7 @@ function signToken(user){
 }
 
 async function register(req) {
-  console.log("HELP!!!!!")
+  // console.log("HELP!!!!!")
   let user 
   // use the create method on the User controller to first create the user
   try {
@@ -26,33 +26,9 @@ async function register(req) {
   return { status: "success", token, user: modifiedUser }
 }
 
-
-async function login(req) {
-  let user
-
-  // TODO: use the find method on the User controller to first find the user based on the email submitted
-  try{ 
-    user = await find(req.body)
-  } catch(err){
-    console.log(err)
-  }
-
-  if( !user ) return { status: "error", msg: "could not authentixate" }
-
-  // TODO: call the verify() instance method in the User model to be sure the password is legit
-  const passwordIsValid = await User.verify(password)
-
-  if( !passwordIsValid ) return { status: "error", msg: "could not authentixate" }
-
-  const token = signToken(user)
-
-  const { password, ...modifiedUser } = user;
-  return { status: "success", token, user: modifiedUser }
-}
-
-
 async function verify(req){
   const cookie = req.cookies["auth-cookie"]
+  // console.log(`Cookie ${cookie}`);
   if( !cookie ) return { status: "error", msg: "unauthorized" }
 
   const decryptCookie = jwt.verify(cookie, process.env.JWT_SECRET)
@@ -63,6 +39,30 @@ async function verify(req){
   if( !foundUser ) return { status: "error", msg: "unauthorized" }
   
   return { status: "success", user:foundUser }
+}
+
+async function login(req) {
+  let user
+
+  // TODO: use the find method on the User controller to first find the user based on the email submitted
+  try{ 
+    user = await find(req.body);
+  } catch(err){
+    console.error(err);
+    return { status: "error", msg: "could not authentixate"};
+  }
+
+  if( !user ) return { status: "error", msg: "could not authentixate" }
+
+  // TODO: call the verify() instance method in the User model to be sure the password is legit
+  const passwordIsValid = await user.verify(password)
+
+  if( !passwordIsValid ) return { status: "error", msg: "could not authentixate" }
+
+  const token = signToken(user)
+
+  const { password, ...modifiedUser } = user._doc;
+  return { status: "success", token, user: modifiedUser }
 }
 
 module.exports = {
