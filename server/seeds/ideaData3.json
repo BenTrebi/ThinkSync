@@ -1,86 +1,87 @@
 {
 	"bracket": {
-		"questionTitle": "What should we do for Project 3?",
+		"questionTitle": "What is your favorite food?",
 		"userId": "copy_a_userId_here"
 	},
 	"ideers": [
 		{
 			"ideaNum": "1",
-			"ideaText": "Coding Quiz",
+			"ideaText": "pizza",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "2",
-			"ideaText": "Library",
+			"ideaText": "popcorn",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "3",
+      "ideaText": "scallops",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "4",
-			"ideaText": "travel app - local music",
+			"ideaText": "shrimp",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "5",
-			"ideaText": "foreign language immersion - music, movies, news, travel?",
+			"ideaText": "poutine",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "6",
-			"ideaText": "service department car dealership software",
+			"ideaText": "watermelon",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "7",
-			"ideaText": "learning platform to create flashcards and small/simple notes",
+			"ideaText": "raspberries",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "8",
-			"ideaText": "Sunflower growth tracker. Enter details like planting date, height, number of blooms, etc. Then take data to make visualizations or recommendations. Could be about more than just sunflowers.",
+			"ideaText": "steak",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "9",
-			"ideaText": "crowdfunding platform",
+			"ideaText": "cheesy nachos",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "10",
-			"ideaText": "plant identifier",
+			"ideaText": "oatmeal",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "11",
-			"ideaText": "dating apps for coders",
+			"ideaText": "scrambled eggs",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "12",
-			"ideaText": "fungi identifier",
+			"ideaText": "french toast",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "13",
-			"ideaText": "code snippet library",
+			"ideaText": "eggs benedict",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "14",
-			"ideaText": "moon/star/sunset tracker",
+			"ideaText": "bacon",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "15",
-			"ideaText": "planet/space database",
+			"ideaText": "strawberries",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "16",
-			"ideaText": "poll making website",
+			"ideaText": "ice cream",
 			"userId": "copy_a_userId_here"
 		}
 	]
