@@ -70,7 +70,7 @@ export default function SyncComponent() {
 
   }
 
-  function handleWinnerClick(index, ideaIndex) {
+  const handleWinnerClick = (index, ideaIndex) => {
     // To-Do: implement check if entry already added to fix duplicate entries to updatedWinners array.
     if (winners[index] !== ideaIndex) {
       const updatedWinners = [...winners];
