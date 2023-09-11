@@ -30,6 +30,7 @@ export default function Home() {
 
     <MDBContainer className='mt-4'>
       <MDBRow>
+
         <MDBCol md='6'>
             <MDBCard className='text-white mb-3 new-think'>
               <MDBCardBody>
@@ -40,19 +41,24 @@ export default function Home() {
               </MDBCardBody>
             </MDBCard>          
         </MDBCol>
+        
         <MDBCol md='6'>
             <MDBCard className='text-white mb-3 new-think'>
               <MDBCardBody>
                 <MDBCardTitle>View Syncs</MDBCardTitle>
                 <MDBBtn className='button'href='/sync'>
-                          Drip Drip
+                          change text
                 </MDBBtn>
               </MDBCardBody>
             </MDBCard>          
         </MDBCol>
+
       </MDBRow>
+
     </MDBContainer>
       
+
+    
     </>
 
   )
