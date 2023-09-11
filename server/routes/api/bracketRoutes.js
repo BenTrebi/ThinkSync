@@ -27,8 +27,8 @@ router.post("/vote", async (req, res) => {
 
 });
 
-//need to make route for get all for idea history component
-// router.get('/'), async (req,res) =>{
+//need to make route for get all for idea history component by userid
+// router.get('/history/:userId'), async (req,res) =>{
 //   const allBrackets, 
 // }
 
