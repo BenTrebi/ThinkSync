@@ -20,15 +20,7 @@ const ideaSchema = new Schema(
       required: true
     },
 
-    bracketId: {
-      type: Schema.Types.ObjectId,
-    },
-
-    votes: [{
-      ref: "Vote",
-      type: Schema.Types.ObjectId
-    }],
-
+    votes: [voteSchema], //each individual vote has a round identifier
 
   },
   {
@@ -39,6 +31,7 @@ const ideaSchema = new Schema(
 
 ideaSchema.virtual('voteCount').get(function() {
   // return an object with roundNums and voteCounts
+  //total votes and votes by round
   return this.votes.length
 })
 

@@ -1,12 +1,20 @@
+/***********************************************/
+/* Global Variables ****************************/
 :root {
-  --dark-black: #292929;
+  --dark-black: #202020;
   --dark-gray: #575757;
   --primary-green: #6DA34D;
   --secondary-purple: #56445D;
+  --darker-purple: #281f2b;
+  --lighter-purple: #b526a0;
   --accent-color-teal: #548687;
   --highlight-color: #C5E99B;
   --darker-green: #8FBC94;
 }
+
+
+/***********************************************/
+/* General *************************************/
 
 html, body {
   padding: 0;
@@ -22,16 +30,18 @@ a:hover {
   color: var(--highlight-color)
 }
 
-#navbar {
-  background-color: var(--secondary-purple);
+::-webkit-scrollbar {
+  width: 12px;
 }
 
-.logo {
-  margin: 0;
+::-webkit-scrollbar-thumb {
+  background: var(--darker-purple);
+  border-radius: 6px;
+  border: 1px solid var(--lighter-purple)
 }
 
-.new-think {
-  background-color: var(--accent-color-teal);
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lighter-purple);
 }
 
 .button {
@@ -47,27 +57,120 @@ a:hover {
   background-color: var(--primary-green);
 }
 
-.idea-bracket {
+
+/***********************************************/
+/* Navbar **************************************/
+#navbar {
+  background-color: var(--secondary-purple);
+}
+
+.logo {
+  margin: 0;
+}
+
+
+/***********************************************/
+/* Think ***************************************/
+
+.new-think {
+  background-color: var(--accent-color-teal);
+}
+
+
+/***********************************************/
+/* Sync ****************************************/
+
+.round {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  -webkit-box-shadow: inset 0px 0px 15px 1px rgba(196,25,179,1);
+  -moz-box-shadow: inset 0px 0px 15px 1px rgba(196,25,179,1);
+  box-shadow: inset 0px 0px 15px 1px rgba(196,25,179,1);
+
+}
+
+.sync-title {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin-top: 1.5em;
+}
+
+.decision {
   border-radius: 1em;
   filter: drop-shadow(0px 0px 6px #000000);
 }
 
-.idea-button {
+/* .decision-card {
+  
+} */
+
+.idea-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  width: 100%;
+  height: 8em;
+  margin: 1em;
+  /* The following cuts the text off (vertically) if too long: */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.decision-pair-container {
+  padding: 0em;
+  margin: 0;
+}
+
+.decision-pair-item {
+  background-color: var(--dark-gray);
+  border-radius: 0.3em;
+  margin: 0.2em;
+  padding-bottom: 0.5em;
+}
+
+.decision-button {
   background-color: var(--dark-black);
   border: 1px solid var(--secondary-purple);
   color: #12b9ec;
-  box-shadow: 5px 5px 10px 1px #000000;
+  box-shadow: 5px 5px 10px 1px var(--dark-black);
 }
 
-.idea-button:hover {
+.decision-button:hover {
   background-color: var(--accent-color-teal);
   border: 1px solid var(--secondary-purple);
 }
 
-.idea-button:focus {
+.decision-button:focus {
   background-color: var(--secondary-purple);
-  box-shadow: 0px 0px 15px 1px #05faf6;
+  box-shadow: 0px 0px 15px 1px var(--accent-color-teal);
 }
+
+.round {
+  background-color: var(--secondary-purple);
+  padding: 1.5em;
+  border-radius: 1em;
+}
+
+.decision-log {
+  background-color: var(--darker-purple);
+  border-radius: 1em;
+  color: var(--accent-color-teal);
+  padding-left: 1em;
+}
+
+.decision-log h5 {
+  color: var(--lighter-purple);
+}
+
+.decision-log p {
+  margin: 0;
+}
+
+
+/***********************************************/
+/* Footer **************************************/
 
 .footer {
   background-color: var(--dark-gray);
