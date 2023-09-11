@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import Alert from 'react-bootstrap/Alert';
 
 import {
   MDBContainer,
@@ -23,16 +24,33 @@ const defaultUser = {
 
 export default function Signup() {
   const [ signUpData, setSignUpState ] = useState(defaultUser)
-  const [ signupResult, setSignupResult ] = useState("")
+  const [ alertState, setAlertState ] = useState({type: "", message:""})
 
   function handleSignUpChange(e) {
     e.preventDefault();
     setSignUpState({ ...signUpData, [e.target.name]: e.target.value })
+    setAlertState({type: "", message:""})
   }
+
+  function checkErrors(boolean) {
+    if( boolean === true) {
+      setAlertState({type:"danger", message: "Please Enter All Form Information to Continue!"})
+    }}
 
   async function submitSignUp(e){
     e.preventDefault()
     console.log(signUpData)
+
+    let errorsFound = 0 
+    for (const key in signUpData) {
+      if (!signUpData[key] || !signUpData[key].length) {
+        errorsFound++
+      }
+    }
+    if( errorsFound > 0 ){
+      checkErrors(true)
+      return
+    }
 
     const query = await fetch("/api/auth/register", {
       method: "POST",
@@ -45,14 +63,14 @@ export default function Signup() {
 
       const result = await query.json()
       // console.log(result)
-      // if( result.status === "success" && result.payload ){
-      //   window.location.href = "/"
-      // }
+      if( result.status === "success" && result.payload ){
+        window.location.href = "/think"
+      }
       console.log(result)
   }
 
   return (
-    <form>
+  
     <MDBContainer style={{ marginTop:"3%", marginBottom:"3%" }}>
       <MDBRow>
         <MDBCol col='6'>
@@ -62,18 +80,20 @@ export default function Signup() {
               <MDBInput name='username' style={{ marginTop:"3%", marginBottom:"3%" }} contrast label='Username' id='typeTextSignup' type='text' value={signUpData.username} onChange={handleSignUpChange}/>
               <MDBInput name='email' style={{ marginTop:"3%", marginBottom:"3%" }} contrast label='Email' id='typeEmail' type='email' value={signUpData.email} onChange={handleSignUpChange} />         
               <MDBInput name='password' style={{ marginTop:"3%", marginBottom:"3%" }} contrast label='Password' id='typePasswordSignup' type='password' value={signUpData.password} onChange={handleSignUpChange} />         
-              <MDBBtn style={{marginTop:"2%"}} onClick={submitSignUp}>Sign Up Now</MDBBtn>
+              <MDBBtn style={{marginTop:"2%"}} onClick={submitSignUp}>Sign Up</MDBBtn>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
       </MDBRow>
-      { signupResult === "fail" && (
-        <div style={{marginTop:'2%'}} className="alert alert-danger" role="alert">
-          Signup failed!
-        </div>
-      )}
+      { alertState.type.length > 0 && (
+      <>
+      <Alert variant={alertState.type} className="mt-3">
+          {alertState.message}
+          </Alert>
+      </>
+        )}
     </MDBContainer>
     
-    </form>
+
   )
 }

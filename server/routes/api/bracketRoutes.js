@@ -62,12 +62,14 @@ router.get('/:id', async (req, res) => {
     console.log(firstBracketIdeas)
 
     res.json({ bracket: firstBracket, ideas: firstBracketIdeas })
+    
   } catch (err) {
     console.log(err)
   }
 })
 
 module.exports = router;
+
 
 /*
 https://stackoverflow.com/questions/8303900/mongodb-mongoose-findmany-find-all-documents-with-ids-listed-in-array

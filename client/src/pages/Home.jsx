@@ -8,17 +8,21 @@ import {
   MDBCardBody,
   MDBCardTitle,
   MDBCardText,
+  MDBCardImage,
   MDBBtn
 } from 'mdb-react-ui-kit';
+import groupPhoto from '../assets/images/groupPhoto.jpg'
 
 export default function Home() {
   return (
     <>
+    
     <MDBContainer className='mt-5'>
-
+  
       <MDBRow>
         <MDBCol md='12'>
           <MDBCard alignment='center' className='bg-dark text-white'>
+          <MDBCardImage src={ groupPhoto } position='top' alt='...' />
             <MDBCardHeader  tag="h2">About</MDBCardHeader>
             <MDBCardBody>
               <p>A one-stop-shop for all that you and your team could need to vote on ideas, make come to decisions, or just make a bracket for March Madness.</p>
@@ -26,10 +30,12 @@ export default function Home() {
           </MDBCard>
         </MDBCol>
       </MDBRow>
+
     </MDBContainer>
 
     <MDBContainer className='mt-4'>
       <MDBRow>
+
         <MDBCol md='6'>
             <MDBCard className='text-white mb-3 new-think'>
               <MDBCardBody>
@@ -40,19 +46,24 @@ export default function Home() {
               </MDBCardBody>
             </MDBCard>          
         </MDBCol>
+        
         <MDBCol md='6'>
             <MDBCard className='text-white mb-3 new-think'>
               <MDBCardBody>
                 <MDBCardTitle>View Syncs</MDBCardTitle>
                 <MDBBtn className='button'href='/sync'>
-                          Drip Drip
+                          change text
                 </MDBBtn>
               </MDBCardBody>
             </MDBCard>          
         </MDBCol>
+
       </MDBRow>
+
     </MDBContainer>
       
+
+    
     </>
 
   )

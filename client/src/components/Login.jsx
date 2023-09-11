@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import Alert from 'react-bootstrap/Alert';
 
 import {
   MDBContainer,
@@ -22,15 +23,50 @@ const defaultUser = {
 
 export default function Login() {
   const [ loginData, setLoginState ] = useState(defaultUser)
+  const [ alertState, setAlertState ] = useState({type: "", message:""})
 
   function handleLoginChange(e) {
     e.preventDefault();
     setLoginState({ ...loginData, [e.target.name]: e.target.value })
+    setAlertState({type: "", message:""})
   }
 
-  function submitLogin(e) {
+  function checkErrors(boolean) {
+    if( boolean === true) {
+      setAlertState({type:"danger", message: "Please Enter the correct form information!"})
+    }}
+
+  async function submitLogin(e) {
     e.preventDefault()
     console.log(loginData)
+    let errorsFound = 0 
+    for (const key in loginData) {
+      if (!loginData[key] || !loginData[key].length) {
+        errorsFound++
+      }
+    }
+    if( errorsFound > 0 ){
+      checkErrors(true)
+      return
+    }
+
+    const query = await fetch("/api/auth/login", {
+      method: "POST",
+      body: JSON.stringify(loginData),
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+
+      const result = await query.json()
+      console.log(result)
+      if( result.status === "success" && result.payload ){
+        window.location.href = "/think"
+      } else {
+        errorsFound++
+        checkErrors(true)
+        return
+      }
   }
 
   return (
@@ -48,6 +84,14 @@ export default function Login() {
           </MDBCard>
         </MDBCol>
       </MDBRow>
+      { alertState.type.length > 0 && (
+      <>
+      <Alert variant={alertState.type} className="mt-3">
+          {alertState.message}
+          </Alert>
+      </>
+        )}
     </MDBContainer>
+    
   )
-}
+  }
