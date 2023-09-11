@@ -99,7 +99,7 @@ export default function SyncComponent(prop) {
                     <MDBCardText className='idea-text text-white d-flex justify-content-center'>
                       {pair[1].ideaText}
                     </MDBCardText>
-                    d 
+                    
                     <MDBBtn floating 
                             className='decision-button' 
                             onClick={() => handleWinnerClick(index, 1)}
