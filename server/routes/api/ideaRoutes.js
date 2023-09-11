@@ -16,6 +16,8 @@ router.post("/", async (req, res) => {
       { runValidators: true, new: true }
     );
 
+
+
     //add bracket to user? would have to update model to include a brackets array
     // const addBracket = await User.findOneAndUpdate(
     //   { _id: newBracket.userId },
