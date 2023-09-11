@@ -30,21 +30,26 @@ router.post("/vote", async(req,res)=>{
 //need to make route for get all for idea history component
 // router.get('/history')
 //to populate the sync rounds get by bracket ID
-router.get('/:id'), async(req,res)=>{
+router.get('/:id', async(req,res)=>{
   try{
-    const firstBracket = await Bracket.findbyPk(req.params.id,{
-      include:[{model: Bracket},
-      {model: Idea}]
+    const firstBracket = await Bracket.findById(req.params.id)
+
+    let ideaList = firstBracket.ideas
+    console.log(ideaList)
+
+    const firstBracketIdeas = await Idea.find({
+      '_id': {
+        $in: ideaList
+      }
     })
 
-    res.send(firstBracket)
+    console.log(firstBracketIdeas)
+
+    res.json({ bracket: firstBracket, ideas: firstBracketIdeas })
   }catch(err){
     console.log(err)
   }
-}
-
-
-
+});
 
 
 module.exports = router;
