@@ -4,7 +4,7 @@ import SyncComponent from '../components/SyncComponent'
 export default function Sync() {
 
   const objFromThinkComponent = {
-      title: "How should we do this particular thing?",
+      title: "Best idea for a web application?",
       ideas: [
         "Coding Quiz",
         "Something about libraries",
