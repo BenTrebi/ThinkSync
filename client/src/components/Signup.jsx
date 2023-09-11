@@ -45,14 +45,14 @@ export default function Signup() {
 
       const result = await query.json()
       // console.log(result)
-      // if( result.status === "success" && result.payload ){
-      //   window.location.href = "/"
-      // }
+      if( result.status === "success" && result.payload ){
+        window.location.href = "/think"
+      }
       console.log(result)
   }
 
   return (
-    <form>
+  
     <MDBContainer style={{ marginTop:"3%", marginBottom:"3%" }}>
       <MDBRow>
         <MDBCol col='6'>
@@ -74,6 +74,6 @@ export default function Signup() {
       )}
     </MDBContainer>
     
-    </form>
+
   )
 }
