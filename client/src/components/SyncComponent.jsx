@@ -12,8 +12,7 @@ import {
   MDBIcon
 } from 'mdb-react-ui-kit';
 
-export default function SyncComponent(prop) {
-  // console.log(prop)
+export default function SyncComponent() {
 
   const [pairs, setPairs] = useState([]);
   const [round, setRound] = useState(1);
@@ -60,7 +59,29 @@ export default function SyncComponent(prop) {
     return pairedIdeas;
   };
 
-  const handleWinnerClick = (index, ideaIndex) => {
+  // reset the entire bracket
+  const handleReset = () => {
+    setWinners([])
+    setRound(1)
+  }
+
+  // This function will be called to post results of finished round to database.
+  function handleRoundPost() {
+
+  }
+
+  function handleWinnerClick(index, ideaIndex) {
+    // To-Do: implement check if entry already added to fix duplicate entries to updatedWinners array.
+    if (winners[index] !== ideaIndex) {
+      const updatedWinners = [...winners];
+      updatedWinners[index] = ideaIndex;
+      setWinners(updatedWinners);
+
+      console.log('Updated Winners:', updatedWinners);
+    }
+
+    // To-Do: implement check here if all decision divs have a winner selected..
+
     console.log(`handleWinnerClick called for Bracket ${index + 1} (pairedIdeas[${index}]) with winner being option ${ideaIndex + 1} (pairedIdeas[${index}][${ideaIndex}])`)
   };
 
@@ -84,27 +105,33 @@ export default function SyncComponent(prop) {
                 <MDBCardTitle className='text-center mt-2'>Decision {index + 1}</MDBCardTitle>
                 <MDBCardBody className='decision-pair-container d-flex justify-content-center flex-nowrap'>
                   <div className='decision-pair-item d-flex flex-wrap justify-content-center align-items-end'>
+
+                  {/* checking if ideaText is not null before rendering */}
+                  {pair[0].ideaText && (
                     <MDBCardText className='idea-text text-white d-flex justify-content-center'>
                       {pair[0].ideaText}
                     </MDBCardText>
+                  )}
 
                     <MDBBtn floating 
                             className='decision-button' 
                             onClick={() => handleWinnerClick(index, 0)}
-                            disabled={false} // disable other button of pair after winner of pair chosen
-
+                            disabled={winners[index] !== undefined}
                   ><MDBIcon fas icon="tint" /></MDBBtn>
                   </div>
                   <div className='decision-pair-item d-flex flex-wrap justify-content-center align-items-end'>
+
+                  {/* checking if ideaText is not null before rendering */}
+                  {pair[1].ideaText && (
                     <MDBCardText className='idea-text text-white d-flex justify-content-center'>
                       {pair[1].ideaText}
                     </MDBCardText>
+                  )}
                     
                     <MDBBtn floating 
                             className='decision-button' 
                             onClick={() => handleWinnerClick(index, 1)}
-                            disabled={false} // disable other button of pair after winner of pair chosen
-                                          // To-Do: Create function to manage `isDisabled` state for button.
+                            disabled={winners[index] !== undefined}
 
                   ><MDBIcon fas icon="tint" /></MDBBtn>
                   </div>
@@ -114,6 +141,22 @@ export default function SyncComponent(prop) {
           </MDBCol>
           ))}
       </MDBRow>
+
+      <MDBBtn className='mt-4' onClick={handleReset} disabled={winners.length === 0} style={{ backgroundColor: 'purple'}}>Reset</MDBBtn>
+
+      {/* display winner data (mainly for development debugging)
+      The decision-log outputs vote for each decision of each round */}
+      <div className='decision-log'>
+        <h5 className='mt-4'>{`Round ${round}`}</h5>
+        {winners.map((winnerIndex, index) => (
+            <div key={index}>
+              <p style={{ fontFamily: 'monospace', fontSize: '0.8em'}}>
+                Decision <strong style={{ color: 'darkgray' }}>{index + 1}</strong> vote: {pairedIdeas[index][winnerIndex].ideaText}
+              </p>
+            </div>
+        ))}
+      </div>
+
     </MDBContainer>
   )
 }

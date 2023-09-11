@@ -153,6 +153,21 @@ a:hover {
   border-radius: 1em;
 }
 
+.decision-log {
+  background-color: var(--darker-purple);
+  border-radius: 1em;
+  color: var(--accent-color-teal);
+  padding-left: 1em;
+}
+
+.decision-log h5 {
+  color: var(--lighter-purple);
+}
+
+.decision-log p {
+  margin: 0;
+}
+
 
 /***********************************************/
 /* Footer **************************************/
