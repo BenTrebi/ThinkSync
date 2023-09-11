@@ -7,6 +7,7 @@ router.post("/vote", async (req, res) => {
   try {
     const vote = req.body;
     console.log(`this is vote ${vote}`);
+    console.log(`this is vote ${vote[0]}`);
 
     let updateIdeaVotes = [];
 
