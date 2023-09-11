@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import Alert from 'react-bootstrap/Alert';
 
 import {
   MDBContainer,
@@ -23,16 +24,33 @@ const defaultUser = {
 
 export default function Signup() {
   const [ signUpData, setSignUpState ] = useState(defaultUser)
-  const [ signupResult, setSignupResult ] = useState("")
+  const [ alertState, setAlertState ] = useState({type: "", message:""})
 
   function handleSignUpChange(e) {
     e.preventDefault();
     setSignUpState({ ...signUpData, [e.target.name]: e.target.value })
+    setAlertState({type: "", message:""})
   }
+
+  function checkErrors(boolean) {
+    if( boolean === true) {
+      setAlertState({type:"danger", message: "Please Enter All Form Information to Continue!"})
+    }}
 
   async function submitSignUp(e){
     e.preventDefault()
     console.log(signUpData)
+
+    let errorsFound = 0 
+    for (const key in signUpData) {
+      if (!signUpData[key] || !signUpData[key].length) {
+        errorsFound++
+      }
+    }
+    if( errorsFound > 0 ){
+      checkErrors(true)
+      return
+    }
 
     const query = await fetch("/api/auth/register", {
       method: "POST",
@@ -67,11 +85,13 @@ export default function Signup() {
           </MDBCard>
         </MDBCol>
       </MDBRow>
-      { signupResult === "fail" && (
-        <div style={{marginTop:'2%'}} className="alert alert-danger" role="alert">
-          Signup failed!
-        </div>
-      )}
+      { alertState.type.length > 0 && (
+      <>
+      <Alert variant={alertState.type} className="mt-3">
+          {alertState.message}
+          </Alert>
+      </>
+        )}
     </MDBContainer>
     
 
