@@ -5,6 +5,8 @@
   --dark-gray: #575757;
   --primary-green: #6DA34D;
   --secondary-purple: #56445D;
+  --darker-purple: #281f2b;
+  --lighter-purple: #b526a0;
   --accent-color-teal: #548687;
   --highlight-color: #C5E99B;
   --darker-green: #8FBC94;
@@ -33,12 +35,13 @@ a:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: var(--darker-purple);
   border-radius: 6px;
+  border: 1px solid var(--lighter-purple)
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--lighter-purple);
 }
 
 .button {
@@ -81,6 +84,10 @@ a:hover {
   display: flex;
   flex-wrap: nowrap;
   overflow-x: scroll;
+  -webkit-box-shadow: inset 0px 0px 15px 1px rgba(196,25,179,1);
+  -moz-box-shadow: inset 0px 0px 15px 1px rgba(196,25,179,1);
+  box-shadow: inset 0px 0px 15px 1px rgba(196,25,179,1);
+
 }
 
 .sync-title {
@@ -127,7 +134,7 @@ a:hover {
   background-color: var(--dark-black);
   border: 1px solid var(--secondary-purple);
   color: #12b9ec;
-  box-shadow: 5px 5px 10px 1px #000000;
+  box-shadow: 5px 5px 10px 1px var(--dark-black);
 }
 
 .decision-button:hover {
@@ -137,7 +144,7 @@ a:hover {
 
 .decision-button:focus {
   background-color: var(--secondary-purple);
-  box-shadow: 0px 0px 15px 1px #05faf6;
+  box-shadow: 0px 0px 15px 1px var(--accent-color-teal);
 }
 
 .round {
