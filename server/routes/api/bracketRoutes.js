@@ -28,9 +28,29 @@ router.post("/vote", async (req, res) => {
 });
 
 //need to make route for get all for idea history component by userid
-// router.get('/history/:userId'), async (req,res) =>{
-//   const allBrackets, 
-// }
+router.get('/history/:userId', async (req,res) =>{
+  try {
+    let balloon = {userId: req.params.userId}
+    console.log(`this is balloon ${balloon}`)
+    const historyBracket = await Bracket.findOne(balloon
+    )
+    console.log(`this is historyBracket ${historyBracket}`)
+    let ideaListy = historyBracket.ideas
+    console.log(`this is ideaList ${ideaListy}`)
+
+    const historyBracketIdeas = await Idea.find({
+      '_id': {
+        $in: ideaListy
+      }
+    })
+
+    console.log(historyBracketIdeas)
+
+    res.json({ bracket: historyBracket, ideas: historyBracketIdeas })
+  } catch (err) {
+    console.log(err)
+  }
+})
 
 
 //to populate the sync rounds get bracket and idea objects BY bracket id
@@ -38,7 +58,7 @@ router.get('/:id', async (req, res) => {
   try {
     const firstBracket = await Bracket.findById(req.params.id
     )
-
+    console.log(`this is firstBracket`)
     let ideaList = firstBracket.ideas
     console.log(ideaList)
 
