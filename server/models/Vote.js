@@ -16,13 +16,7 @@ const voteSchema = new Schema(
     roundNum: {
       type: Number,
       required: true,
-    },
-
-    // roundId: {
-    //   ref: 'Round',
-    //   type: Schema.Types.ObjectId,
-    //   required: true
-    // },
+    }
 
   },
   {
