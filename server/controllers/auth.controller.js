@@ -33,7 +33,12 @@ async function verify(req) {
 
   if (!cookie) return { status: "error", msg: "unauthorized" }
 
-  const decryptCookie = jwt.verify(cookie, process.env.JWT_SECRET)
+  let decryptCookie
+  try {
+    decryptCookie = jwt.verify(cookie, process.env.JWT_SECRET)
+  } catch(err){
+    return { status: "error", msg: "unauthorized" }
+  }
   if (!decryptCookie) return { status: "error", msg: "unauthorized" }
 
   // use the findOne method on the user controller to look up the user by the id returned from verifying the token

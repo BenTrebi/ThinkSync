@@ -65,6 +65,7 @@ export default function Signup() {
       // console.log(result)
       if( result.status === "success" && result.payload ){
         window.location.href = "/think"
+        
       }
       console.log(result)
   }
