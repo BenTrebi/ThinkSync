@@ -15,14 +15,6 @@ import {
   MDBSpinner
 } from 'mdb-react-ui-kit';
 
-
-
-const defaultInput = {
-  title: '',
-  idea: '',
-}
-
-
 export default function ThinkComponent() {
   const [formVal, setFormVal] = useState([{ idea: '' }]);
   const [formInput, setFormInput] = useState({ title: '', ideas: [''] })
@@ -115,7 +107,7 @@ export default function ThinkComponent() {
                     value={idea}
                     onChange={(e) => handleInputChange(e, i)} 
                     />
-                    <MDBBtn className="btn btn-primary" type="button" id={`button-addon${i + 1}`} onClick={deleteIdea(i)}>
+                    <MDBBtn className="btn btn-primary" type="button" id={`button-addon${i + 1}`} onClick={() => deleteIdea(i)}>
                       Delete
                     </MDBBtn>
                   </MDBInputGroup>
