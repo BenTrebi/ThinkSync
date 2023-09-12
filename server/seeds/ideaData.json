@@ -1,88 +1,87 @@
 {
 	"bracket": {
 		"questionTitle": "What should we do for Project 3?",
-		"userId": "64ff3af8c12136ee6ee90b59"
+		"userId": "<<copy_a_userId_here>>"
 	},
 	"ideers": [
 		{
 			"ideaNum": "1",
 			"ideaText": "Coding Quiz",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "2",
 			"ideaText": "Library",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "3",
-			"ideaText": "travel app - local music",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "4",
 			"ideaText": "travel app - local music",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "5",
 			"ideaText": "foreign language immersion - music, movies, news, travel?",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "6",
 			"ideaText": "service department car dealership software",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "7",
 			"ideaText": "learning platform to create flashcards and small/simple notes",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "8",
 			"ideaText": "Sunflower growth tracker. Enter details like planting date, height, number of blooms, etc. Then take data to make visualizations or recommendations. Could be about more than just sunflowers.",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "9",
 			"ideaText": "crowdfunding platform",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "10",
 			"ideaText": "plant identifier",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "11",
 			"ideaText": "dating apps for coders",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "12",
 			"ideaText": "fungi identifier",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "13",
 			"ideaText": "code snippet library",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "14",
 			"ideaText": "moon/star/sunset tracker",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "15",
 			"ideaText": "planet/space database",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		},
 		{
 			"ideaNum": "16",
 			"ideaText": "poll making website",
-			"userId": "64ff3af8c12136ee6ee90b59"
+			"userId": "<<copy_a_userId_here>>"
 		}
 	]
 }

@@ -21,6 +21,8 @@ export default function Navbar() {
 
   const [showBasic, setShowBasic] = useState(false);
 
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <MDBNavbar id='navbar' expand='lg' dark>
       <MDBContainer fluid>
@@ -67,6 +69,17 @@ export default function Navbar() {
                   Login | Signup
                 </a>
               </li>
+              {loggedIn ? (
+                <li className='nav-item'>
+                  <a className='nav-link' href='/logout'>
+                    Logout
+                  </a>
+                </li>
+              ) : (
+              <li className='nav-item'>
+                <a className='nav-link'>
+                </a>
+              </li>)}
             </ul>
           </div>
         </MDBCollapse>

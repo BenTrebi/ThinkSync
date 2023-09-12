@@ -1,0 +1,88 @@
+{
+	"bracket": {
+		"questionTitle": "What is your favorite individual movie or movie series?",
+		"userId": "copy_a_userId_here"
+	},
+	"ideers": [
+		{
+			"ideaNum": "1",
+			"ideaText": "The Matrix",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "2",
+			"ideaText": "Good Will Hunting",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "3",
+      "ideaText": "Attack of the Killer Tomatoes",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "4",
+			"ideaText": "The Princess Bride",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "5",
+			"ideaText": "Willy Wonka and the Chocolate Factory",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "6",
+			"ideaText": "The Dark Knight",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "7",
+			"ideaText": "Forrest Gump",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "8",
+			"ideaText": "Finding Nemo",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "9",
+			"ideaText": "Star Wars",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "10",
+			"ideaText": "Brazil",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "11",
+			"ideaText": "The Wizard of Oz",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "12",
+			"ideaText": "Space Balls",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "13",
+			"ideaText": "Better Off Dead",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "14",
+			"ideaText": "Lord of the Rings",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "15",
+			"ideaText": "Star Trek",
+			"userId": "copy_a_userId_here"
+		},
+		{
+			"ideaNum": "16",
+			"ideaText": "Dune",
+			"userId": "copy_a_userId_here"
+		}
+	]
+}
