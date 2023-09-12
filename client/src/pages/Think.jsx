@@ -5,6 +5,7 @@ import SavedBrackets from '../components/SavedBrackets'
 
 
 
+
 export default function Think() {
   return (
     <>
