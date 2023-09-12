@@ -3,7 +3,8 @@ import { Routes, Route, BrowserRouter, useParams } from 'react-router-dom'
 import Cookies from "js-cookie"
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import './App.css'                          
+import './App.css'        
+import { UserProvider } from "./utils/UserContext";                  
 import Home from './pages/Home'
 import LoginSignup from './pages/LoginSignup'
 import Logout from './pages/Logout'
@@ -54,8 +55,8 @@ function App() {
   }, [])
 
   return (
-    <>
-      <Header currUser={currUser} />
+    <UserProvider>
+      <Header />
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -66,7 +67,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Footer />
-    </>
+    </UserProvider>
   )
 }
 
