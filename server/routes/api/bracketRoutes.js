@@ -28,12 +28,12 @@ router.post("/vote", async (req, res) => {
 
 });
 
-//need to make route for get all for idea history component by userid
-router.get('/history/:userId', async (req,res) =>{
+//GET all for Saved Brackets component by userid
+router.get('/history/:userId', async (req, res) => {
   try {
-    let bracketHistoryByUserId = {userId: req.params.userId}
-    console.log(`this is bracketHistoryByUserId ${bracketHistoryByUserId}`)
-    const historyBracket = await Bracket.find(bracketHistoryByUserId
+    let savedBracketsByUserId = { userId: req.params.userId }
+    console.log(`this is savedBracketsByUserId ${savedBracketsByUserId}`)
+    const historyBracket = await Bracket.find(savedBracketsByUserId
     ).populate('ideas')
     console.log(`this is historyBracket ${historyBracket}`)
 
@@ -42,6 +42,28 @@ router.get('/history/:userId', async (req,res) =>{
     console.log(err)
   }
 })
+
+// GET one Saved Bracket by bracketId
+router.get('/history/:bracketId', async (req, res) => {
+  try {
+    const selectedBracket = await Bracket.findById(req.params.id
+    )
+    console.log(`this is selectedBracket`)
+    let ideaLister = selectedBracket.ideas
+    console.log(ideaLister)
+    const selectedBracketIdeas = await Idea.find({
+      '_id': {
+        $in: ideaLister
+      }
+    })
+    console.log(selectedBracketIdeas)
+    res.json({ bracket: selectedBracket, ideas: selectedBracketIdeas })
+
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 
 
 //to populate the sync rounds get bracket and idea objects BY bracket id
@@ -62,7 +84,7 @@ router.get('/:id', async (req, res) => {
     console.log(firstBracketIdeas)
 
     res.json({ bracket: firstBracket, ideas: firstBracketIdeas })
-    
+
   } catch (err) {
     console.log(err)
   }

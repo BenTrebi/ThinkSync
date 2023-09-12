@@ -1,86 +1,87 @@
 {
 	"bracket": {
-		"questionTitle": "What should we do for Project 3?",
+		"questionTitle": "Where should the class go on a fully paid vacation after bootcamp, compliments of Gary?",
 		"userId": "copy_a_userId_here"
 	},
 	"ideers": [
 		{
 			"ideaNum": "1",
-			"ideaText": "Coding Quiz",
+			"ideaText": "Puerto Rico",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "2",
-			"ideaText": "Library",
+			"ideaText": "Paris",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "3",
+      "ideaText": "Philadelphia",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "4",
-			"ideaText": "travel app - local music",
+			"ideaText": "Costa Rica",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "5",
-			"ideaText": "foreign language immersion - music, movies, news, travel?",
+			"ideaText": "Australia",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "6",
-			"ideaText": "service department car dealership software",
+			"ideaText": "New Zealand",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "7",
-			"ideaText": "learning platform to create flashcards and small/simple notes",
+			"ideaText": "Santorini",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "8",
-			"ideaText": "Sunflower growth tracker. Enter details like planting date, height, number of blooms, etc. Then take data to make visualizations or recommendations. Could be about more than just sunflowers.",
+			"ideaText": "Hawaii",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "9",
-			"ideaText": "crowdfunding platform",
+			"ideaText": "Iceland",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "10",
-			"ideaText": "plant identifier",
+			"ideaText": "Maldives",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "11",
-			"ideaText": "dating apps for coders",
+			"ideaText": "Switzerland",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "12",
-			"ideaText": "fungi identifier",
+			"ideaText": "Fiji",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "13",
-			"ideaText": "code snippet library",
+			"ideaText": "Vietnam",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "14",
-			"ideaText": "moon/star/sunset tracker",
+			"ideaText": "Portugal",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "15",
-			"ideaText": "planet/space database",
+			"ideaText": "Hawaii",
 			"userId": "copy_a_userId_here"
 		},
 		{
 			"ideaNum": "16",
-			"ideaText": "poll making website",
+			"ideaText": "Martinique",
 			"userId": "copy_a_userId_here"
 		}
 	]
