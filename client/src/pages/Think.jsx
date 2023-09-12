@@ -12,13 +12,15 @@ export default function Think() {
     <>
       <span style={{ display: 'flex' }}>
         <aside>
-          <Link to='/onesavedbracket/:_id'>
             <SavedBrackets />
-          </Link>
-
         </aside>
         <ThinkComponent />
       </span>
     </>
   )
 }
+
+{/* <Link to='/onesavedbracket/:_id'>
+<SavedBrackets />
+</Link> */}
+
