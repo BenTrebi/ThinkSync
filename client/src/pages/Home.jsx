@@ -52,7 +52,7 @@ export default function Home() {
               <MDBCardBody>
                 <MDBCardTitle>View Syncs</MDBCardTitle>
                 <MDBBtn className='button'href='/sync'>
-                          change text
+                          Open The Faucet
                 </MDBBtn>
               </MDBCardBody>
             </MDBCard>          
