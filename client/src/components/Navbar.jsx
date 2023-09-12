@@ -16,12 +16,12 @@ import {
   MDBCollapse,
 } from 'mdb-react-ui-kit';
 
-export default function Navbar(loggedIn) {
+export default function Navbar() {
   // https://mdbootstrap.com/docs/react/navigation/navbar/
 
   const [showBasic, setShowBasic] = useState(false);
 
-  
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
     <MDBNavbar id='navbar' expand='lg' dark>
