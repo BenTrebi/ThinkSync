@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { useParams} from 'react-router-dom';
 import {
   MDBContainer,
   MDBRow,
@@ -13,6 +14,10 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function OneSavedBracket() {
+  //access parameters from URL using useParams
+  const {bracketId} = useParams();
+
+  console.log(bracketId)  //this does capture the bracketId from the URL!!!
   //get current user from session
   // const { currUser } = useUserContext()
 
@@ -20,9 +25,9 @@ export default function OneSavedBracket() {
   //put oneBracket into state
   const [ oneBracket, setOneBracket ] = useState([])
 
+
   // async function getBrackets(userId){//circumvent currUser for now
   async function getOneBracket(){
-    const bracketId = '64ff7ef0a426228b29921105'//circumvent currUser for now
     const result = await fetch(`/api/bracket/history/${bracketId}`)
     const data = await result.json()
     setOneBracket(data)
@@ -33,10 +38,11 @@ export default function OneSavedBracket() {
       getOneBracket()
   },[])
 
+
   //circumvent currUser for now
   // useEffect(() => {
   //   if( currUser?.data._id ){
-  //     getBrackets(currUser?.data._id)
+  //     getOneBracket(currUser?.data._id)
   //   }
   // },[currUser])
 
@@ -47,10 +53,10 @@ export default function OneSavedBracket() {
         <MDBCol col='2'>
           <MDBCard className='bg-dark text-white'>
             <MDBCardBody>
-            <MDBCardTitle className='text-white'>Saved Bracket whoohoo:</MDBCardTitle>
+            <MDBCardTitle className='text-white'>Saved Bracket whoop whoop:</MDBCardTitle>
             <ul >
                 <li>
-                    {oneBracket.questionTitle}
+                    {oneBracket}
                 </li>
             </ul>
             </MDBCardBody>

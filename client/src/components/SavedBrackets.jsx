@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 //TODO: Verify this path
 // import { useUserContext } from "../utils/UserProvider" ///circumvent currUser for now
-
+import { Link } from 'react-router-dom'
 
 import {
   MDBContainer,
@@ -40,6 +40,8 @@ export default function SavedBrackets() {
   //   }
   // },[currUser])
 
+
+
   return (
     <>
     <MDBContainer style={{ marginTop:"3%", marginBottom:"3%" }}>
@@ -50,11 +52,9 @@ export default function SavedBrackets() {
             <MDBCardTitle className='text-white'>Saved Brackets:</MDBCardTitle>
             <ul >
               { brackets.map( (bracket) => (
-                <li>
-                  <a href={`onesavedbracket/${bracket._id}`}>
-                    {bracket.questionTitle}
-                    {bracket._id}
-                  </a>
+                <li key = {bracket._id}><Link to ={`onesavedbracket/${bracket._id}`}>
+                  {bracket.questionTitle}
+                </Link>
                 </li>
               ))}
             </ul>
@@ -66,3 +66,15 @@ export default function SavedBrackets() {
     </>
   )
 }
+
+
+
+// { brackets.map( (bracket) => (
+                
+//   <li>
+//     <a href={`onesavedbracket/${bracket._id}`}>
+//       {bracket.questionTitle}
+//       {bracket._id}
+//     </a>
+//   </li>
+// ))}
