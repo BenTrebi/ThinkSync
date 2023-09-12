@@ -1,12 +1,13 @@
-import { useEffect, useState } from "react"
-import Cookies from "js-cookie"
+import { createContext, useContext, useState, useEffect } from "react" 
+import Cookies from "js-cookie";
 
+const UserContext = createContext({})
+export const useUserContext = () => useContext(UserContext)
 
-export default function useAuth(){
+export const UserProvider = ({ children }) => {
+  const [ currUser, setCurrUser ] = useState({ status: "searching", data: null })
 
-  const [currUser, setCurrUser] = useState(false);
-
-  async function verifyUser(){
+  const verifyUser = async() => {
     setCurrUser({ status: "searching", data: null })
     if( Cookies.get("auth-cookie") ){
       try {
@@ -18,7 +19,6 @@ export default function useAuth(){
           }
         })
         const result = await query.json()
-        console.log(result)
         if( result && result.status === "success" ){
           setCurrUser({ status: "found", data: result.payload })
         } else {
@@ -35,9 +35,20 @@ export default function useAuth(){
     }
   }
 
-  return {
-    verifyUser,
-    currUser
+  const logout = () => {
+    Cookies.remove("auth-cookie");
+    setCurrUser({ status: "searching", data: null })
+    window.location.href = "/login"
   }
 
+  useEffect(() => {
+    verifyUser()
+  }, [])
+
+
+  return (
+    <UserContext.Provider value={{ currUser, logout }}>
+      { children }
+    </UserContext.Provider>
+  )
 }

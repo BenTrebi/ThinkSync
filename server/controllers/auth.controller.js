@@ -1,73 +1,77 @@
 const { User } = require('../models');
-const { create, find, findOne } = require("./user.controller")
+const { create, find, findOne, findById } = require("./user.controller")
 const jwt = require("jsonwebtoken");
+require("dotenv").config()
 
-
-function signToken(user) {
-  return jwt.sign({ email: user.email, id: user._id }, process.env.JWT_SECRET)
+function signToken(user){
+  return jwt.sign({ email: user.email, id: user._id}, process.env.JWT_SECRET)
 }
 
 async function register(req) {
-  // console.log("HELP!!!!!")
-  let user
-  // use the create method on the User controller to first create the user
+  let user 
+
   try {
     user = await create(req.body)
-
-  } catch (err) {
-    // if( process.env.NODE_ENV === "development")
+  } catch(err){
+    if( process.env.NODE_ENV === "development") console.log(err)
     throw err
   }
 
-  const token = signToken(user)
+  let token
+  try {
+    token = signToken(user)
+  } catch(err){
+    throw new Error("Could not sign token")
+  }
+  if(!token) throw new Error("Could not sign token")
 
   const { password, ...modifiedUser } = user._doc;
-  return { status: "success", token, user: modifiedUser }
+  return { token, user: modifiedUser }
 }
 
-async function verify(req) {
+
+async function login(req) {
+  let user
+
+  try {
+    user = await findOne({ username: req.body.username })
+  } catch(err){
+    throw new Error(err)
+  }
+  if( !user ) throw new Error("Could not authenticate")
+
+  const passwordIsValid = await user.verify(req.body.password)
+  if( !passwordIsValid ) throw new Error("Could not authenticate")
+
+  let token
+  try {
+    token = signToken(user)
+  } catch(err){
+    throw new Error("Could not sign token")
+  }
+  if(!token) throw new Error("Could not sign token")
+
+  const { password, ...modifiedUser } = user._doc;
+  return { token, user: modifiedUser }
+}
+
+
+async function verify(req){
   const cookie = req.cookies["auth-cookie"]
-
-  console.log(`Cookie ${cookie}`);
-
-
-  if (!cookie) return { status: "error", msg: "unauthorized" }
+  if( !cookie ) throw new Error("Could not authenticate")
 
   let decryptCookie
   try {
     decryptCookie = jwt.verify(cookie, process.env.JWT_SECRET)
   } catch(err){
-    return { status: "error", msg: "unauthorized" }
+    throw new Error("Could not authenticate")
   }
-  if (!decryptCookie) return { status: "error", msg: "unauthorized" }
+  if( !decryptCookie ) throw new Error("Could not authenticate")
 
-  // use the findOne method on the user controller to look up the user by the id returned from verifying the token
-  let foundUser = await findOne(req.body);
-  if (!foundUser) return { status: "error", msg: "unauthorized" }
+  const foundUser = await findById(decryptCookie.id)
+  if( !foundUser ) throw new Error("Could not authenticate")
 
-  return { status: "success", user: foundUser }
-}
-
-async function login(req) {
-  let user;
-
-  try {
-    user = await User.findOne({ username: req.body.username }); // Assuming you have a method like findOne
-  } catch (err) {
-    console.error(err);
-    return { status: "error", msg: "could not authenticate" };
-  }
-
-  if (!user) return { status: "error", msg: "could not authenticate" }
-
-  const passwordIsValid = await user.verify(req.body.password);
-
-  if (!passwordIsValid) return { status: "error", msg: "could not authenticate" }
-
-  const token = signToken(user);
-
-  const { password, ...modifiedUser } = user._doc;
-  return { status: "success", token, user: modifiedUser }
+  return { user: foundUser }
 }
 
 module.exports = {
