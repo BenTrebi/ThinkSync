@@ -14,13 +14,11 @@ import {
 
 export default function SyncComponent() {
 
-  const [pairs, setPairs] = useState([]);
   const [round, setRound] = useState(1);
   const [winners, setWinners] = useState({});
   const [originBracket, setOriginBracket] = useState(null);
 
-  // This is the variable for which bracket to fetch from Mongo by Object Id ("_id") using GET "/:id" route.
-  // Eventually this ID will come as a URL parameter from the ThinkComponent via react-router.
+  // This is the object_id for a bracket in Mongo, hardcoded here (to-do).
   const bracketId = '64ff3bbc11ce5113ae631df2'
 
   // fetchData is nested within useEffect because it is asynchronous
@@ -40,9 +38,17 @@ export default function SyncComponent() {
 
   }, []);
 
+  // This tracks and compares vote count with decision count to change state of round.
   useEffect(() => {
-    if (winners.length === 0) {
+    const voteCount = Object.keys(winners).length;
+
+    if (voteCount === 0) {
       setRound(1);
+      console.log(round, voteCount);
+    } else if (voteCount === pairedIdeas.length) { 
+      setRound(round + 1);
+    } else {
+      // continue..
     }
   }, [winners]);
 
