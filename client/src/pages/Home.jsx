@@ -33,11 +33,11 @@ export default function Home() {
 
     </MDBContainer>
 
-    <MDBContainer className='mt-4'>
+    <MDBContainer className='my-4'>
       <MDBRow>
 
         <MDBCol md='6'>
-            <MDBCard className='text-white mb-6 new-think'>
+            <MDBCard className='text-white mb-4 new-think'>
               <MDBCardBody>
                 <MDBCardTitle>New Think</MDBCardTitle>
                 <MDBBtn className='button'href='/think'>
