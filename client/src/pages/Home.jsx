@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
     
-    <MDBContainer className='mt-5'>
+    <MDBContainer className='mt-4'>
   
       <MDBRow>
         <MDBCol md='12'>
@@ -25,7 +25,7 @@ export default function Home() {
           <MDBCardImage src={ groupPhoto } position='top' alt='...' />
             <MDBCardHeader  tag="h2">About</MDBCardHeader>
             <MDBCardBody>
-              <p>A one-stop-shop for all that you and your team could need to vote on ideas, make come to decisions, or just make a bracket for March Madness.</p>
+              <p>ThinkSync is a dynamic online platform designed to enhance collaboration and productivity among individuals and teams. Whether you're a student, professional, or creative thinker, ThinkSync provides a virtual space for brainstorming, organizing ideas, and working together seamlessly.</p>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
@@ -37,7 +37,7 @@ export default function Home() {
       <MDBRow>
 
         <MDBCol md='6'>
-            <MDBCard className='text-white mb-3 new-think'>
+            <MDBCard className='text-white mb-6 new-think'>
               <MDBCardBody>
                 <MDBCardTitle>New Think</MDBCardTitle>
                 <MDBBtn className='button'href='/think'>
@@ -48,11 +48,11 @@ export default function Home() {
         </MDBCol>
         
         <MDBCol md='6'>
-            <MDBCard className='text-white mb-3 new-think'>
+            <MDBCard className='text-white mb-6 new-think'>
               <MDBCardBody>
                 <MDBCardTitle>View Syncs</MDBCardTitle>
                 <MDBBtn className='button'href='/sync'>
-                          change text
+                          Open The Faucet
                 </MDBBtn>
               </MDBCardBody>
             </MDBCard>          
