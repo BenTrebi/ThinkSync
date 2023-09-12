@@ -14,7 +14,7 @@ import {
 
 export default function OneSavedBracket() {
   //get current user from session
-  // const { currUser } = useUserContext()
+  const { currUser } = useUserContext()
 
 
   //put oneBracket into state
