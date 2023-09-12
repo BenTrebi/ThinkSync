@@ -25,7 +25,7 @@ export default function Home() {
           <MDBCardImage src={ groupPhoto } position='top' alt='...' />
             <MDBCardHeader  tag="h2">About</MDBCardHeader>
             <MDBCardBody>
-              <p>A one-stop-shop for all that you and your team could need to vote on ideas, make come to decisions, or just make a bracket for March Madness.</p>
+              <p>ThinkSync is a dynamic online platform designed to enhance collaboration and productivity among individuals and teams. Whether you're a student, professional, or creative thinker, ThinkSync provides a virtual space for brainstorming, organizing ideas, and working together seamlessly.</p>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
