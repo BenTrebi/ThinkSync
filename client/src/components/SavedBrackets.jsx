@@ -22,7 +22,7 @@ export default function SavedBrackets() {
 
   // async function getBrackets(userId){//circumvent currUser for now
   async function getBrackets(){
-    const userId = '64fb98af06371152ba2eecf9'//circumvent currUser for now
+    const userId = '6500b324072e326187a1fdf1'//circumvent currUser for now
     const result = await fetch(`/api/bracket/history/${userId}`)
     const data = await result.json()
     setBrackets(data)
@@ -53,6 +53,7 @@ export default function SavedBrackets() {
                 <li>
                   <a href={`onesavedbracket/${bracket._id}`}>
                     {bracket.questionTitle}
+                    {bracket._id}
                   </a>
                 </li>
               ))}
