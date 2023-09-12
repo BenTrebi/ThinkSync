@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-
+import Alert from 'react-bootstrap/Alert';
 
 import {
   MDBContainer,
@@ -11,13 +11,15 @@ import {
   MDBCol,
   MDBRow,
   MDBInput,
-  MDBInputGroup,
-  MDBSpinner
+  MDBInputGroup
 } from 'mdb-react-ui-kit';
 
 export default function ThinkComponent() {
   const [formVal, setFormVal] = useState([{ idea: '' }]);
-  const [formInput, setFormInput] = useState({ title: '', ideas: [''] })
+  const [formInput, setFormInput] = useState({ questionTitle: '', ideas: [''] })
+
+  const [ alertState, setAlertState ] = useState({type: "", message:""})
+
   const addIdea = () => {
     setFormInput((prevState) => ({
       ...prevState,
@@ -32,9 +34,6 @@ export default function ThinkComponent() {
       ...prevState,
       ideas: updatedIdeas,
     }))
-    // const newForm = [...formVal]
-    // newForm.splice(i, 1)
-    // setFormVal(newForm)
   }
 
   const handleInputChange = (e, i) => {
@@ -45,37 +44,45 @@ export default function ThinkComponent() {
         ...prevState,
         ideas: updatedIdeas
       }))
-
-    // e.preventDefault();
-    // // setAlertState({type: "", message:""})
-    // setFormInput({ ...formInput, [e.target.name]: e.target.value })
     console.log(formInput)
   }
-  // const onHandle = (e, i) =>  {
-  //   let newForm = [...formVal]
-  //   newForm[i][e.target.name]=e.target.value
-  //   setFormVal
-  // }
-  // const formValidation=() =>  {
-  //   const data = [...formVal]
-  //   for (let index = 0; index < data.length; index++) {
-  //     // const element = array[index];
-  //     if(data[index].idea == "")  {
-  //       data[index].ideaCheck= "idea required"
-  //     } else if (data[index].idea.length > 1) {
-  //       data[index].ideaLengthCheck = "idea needs to be greater than 1"
-  //     }
-  //     else{
-  //       data[index].ideaCheck =""
-  //       data[index].ideaLengthCheck = ""
-  //     }
-  //   }
-  //   setFormVal(data)
-  // }
-  const handleSubmit= (e) => {
-    e.preventDefault();
-    console.log("Form Data", formInput);
-    // formValidation(formVal)
+
+  function checkErrors(boolean) {
+    if( boolean === true) {
+      setAlertState({type:"danger", message: "Please Enter all Form Fields!"})
+    }}
+
+  const handleSubmit = async (e)  => {
+    e.preventDefault()
+    // console.log(formInput)
+    let errorsFound = 0 
+    for (const key in formInput) {
+      if (!formInput[key] || !formInput[key].length) {
+        errorsFound++
+      }
+    }
+    if( errorsFound > 0 ){
+      checkErrors(true)
+      return
+    }
+    
+    const query = await fetch("/api/idea", {
+      method: "POST",
+      body: JSON.stringify(formInput),
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+      
+      const result = await query.json()
+      console.log(result)
+      if( result.status === "success" && result.payload ){
+        window.location.href = "/sync"
+      } else {
+        errorsFound++
+        checkErrors(true)
+        return
+      }
   }
 
 
@@ -86,21 +93,23 @@ export default function ThinkComponent() {
           <MDBCol col='6'>
             <MDBCard className='bg-dark'>
               <MDBCardBody>
-                <MDBCardTitle style={{ color: 'black' }}>Create a Bracket:</MDBCardTitle>
+                <MDBCardTitle className='text-white' style={{ color: 'black' }}>Create a Bracket:</MDBCardTitle>
                 <MDBInput
+                  className='text-white'
                   key={formInput.key}
                   name='Title'
                   style={{ marginTop: "3%", marginBottom: "3%" }}
                   label='Title/Question'
                   id='titleQuestion'
                   type='text'
-                  value={formInput.title || ""}
-                  onChange={(e) => setFormInput({ ...formInput, title: e.target.value })}
+                  value={formInput.questionTitle || ""}
+                  onChange={(e) => setFormInput({ ...formInput, questionTitle: e.target.value })}
                
                 />
                 {formInput.ideas.map((idea, i) => (
                   <MDBInputGroup style={{ marginTop: "1%", marginBottom: "1%" }} key={i}>
                     <MDBInput
+                    className='text-white'
                     name={`idea${i + 1}`}
                     label='idea'
                     type='text'
@@ -144,6 +153,13 @@ export default function ThinkComponent() {
             </MDBCard>
           </MDBCol>
         </MDBRow>
+        { alertState.type.length > 0 && (
+      <>
+      <Alert variant={alertState.type} className="mt-3">
+          {alertState.message}
+          </Alert>
+      </>
+        )}
       </MDBContainer>
     </>
   )
