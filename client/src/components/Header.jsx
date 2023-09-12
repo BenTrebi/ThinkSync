@@ -1,17 +1,14 @@
 import React, { useEffect } from 'react'
 import Navbar from './Navbar'
-import useAuth from '../utils/useAuth'
+import { useUserContext } from '../utils/UserContext'
 
 export default function Header() {
-  const { currUser, verifyUser } = useAuth()
+  const { currUser } = useUserContext() 
+  console.log(currUser)
 
   useEffect(() => {
     console.log(currUser)
   }, [currUser])
-
-  useEffect(() => {
-    verifyUser()
-  }, [])
 
   return (
     <>
