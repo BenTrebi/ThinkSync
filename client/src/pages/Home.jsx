@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
     
-    <MDBContainer className='mt-5'>
+    <MDBContainer className='mt-4'>
   
       <MDBRow>
         <MDBCol md='12'>
@@ -37,7 +37,7 @@ export default function Home() {
       <MDBRow>
 
         <MDBCol md='6'>
-            <MDBCard className='text-white mb-3 new-think'>
+            <MDBCard className='text-white mb-6 new-think'>
               <MDBCardBody>
                 <MDBCardTitle>New Think</MDBCardTitle>
                 <MDBBtn className='button'href='/think'>
@@ -48,7 +48,7 @@ export default function Home() {
         </MDBCol>
         
         <MDBCol md='6'>
-            <MDBCard className='text-white mb-3 new-think'>
+            <MDBCard className='text-white mb-6 new-think'>
               <MDBCardBody>
                 <MDBCardTitle>View Syncs</MDBCardTitle>
                 <MDBBtn className='button'href='/sync'>
