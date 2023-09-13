@@ -62,7 +62,7 @@ export default function SyncComponent() {
 
   ////////////////////////////////////////////////////////////////////////////////////////
   // ROUND UPDATER ////////////////////////////////////////////////////////////////////////
-  // This tracks the round to update pairedIdeas and does calls handleRoundPost to POST to database for round and clears winner object to use it to track the next round.
+  // This tracks the round to update pairedIdeas and does calls postRoundVotes to POST to database for round and clears winner object to use it to track the next round.
   useEffect(() => {
     if (round > 1) {
       // create new array by spread operator copy
@@ -111,7 +111,7 @@ export default function SyncComponent() {
       // before the winner array is cleared with 'handleVoteReset', send vote data from client to server
       // [HERE] e.g 'postRoundVotes(voteData)'
       // ...
-      postRoundVotes();
+      postRoundVotes(newPairedIdeas);
       // ..then..
       handleVoteReset();
 
@@ -119,7 +119,7 @@ export default function SyncComponent() {
     }
   }, [round])
 
-  // This function queries the database for the bracketData by ID, it is called above ^.
+  // This function queries the database for the bracketData by ID, it is called above in a useEffect ^.
   async function getBracket(bracketId) {
     try {
       const response = await fetch(`/api/bracket/${bracketId}`)
@@ -130,14 +130,16 @@ export default function SyncComponent() {
     }
   }
 
-  async function postRoundVotes() {
+  async function postRoundVotes(pairedWinners) {
     try {
       const response = await fetch('/api/bracket/vote', {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
+          // -----------------------------------------------------------------------------------------
           // POST should look like this (array of objects with these properties):
+          //
           //  [
           //      {
           //        "userId": "64ff3af8c12136ee6ee90b59",
@@ -151,10 +153,20 @@ export default function SyncComponent() {
           //      }
           //    ]
           //
+          //
+          // -----------------------------------------------------------------------------------------
+          //
           // userId is available from client session cookie
           //
-          // ideaId is avaiable from winners array, which looks like this (winners array is available after each round completion):
-          // **note that this is an array of arrays which contain objects**
+          // -----------------------------------------------------------------------------------------
+          //
+          //
+          // ideaId is avaiable from "pairedWinners" which is passed as an arugment to this function.
+          //
+          //  It looks like this:
+          //    * see this by using: "console.log(pairedWinners)" *
+          //    **note that this is an array of arrays which contain object pairs (of ideas)**
+          //
           //
           //   [
           //     [
@@ -185,10 +197,14 @@ export default function SyncComponent() {
           //     ]
           // ]
           //
+          // -----------------------------------------------------------------------------------------
+          //
           // roundNum is available from "round" stateful variable (may need to subtract 1)
           //
+          // -----------------------------------------------------------------------------------------
           //
-          // for now, testing purposes, I am passing the vote in here directly:
+          // ..for now, testing purposes, I am passing the vote in here directly:
+          //
         body: JSON.stringify([
           {
             "userId": "64ff3af8c12136ee6ee90b59",
@@ -203,6 +219,7 @@ export default function SyncComponent() {
         ])
       })
 
+      
       console.log(response)
 
       const roundVoteSuccess = await response.json()
@@ -238,7 +255,7 @@ export default function SyncComponent() {
   const handleSyncReset = async () => {
     try {
       // fetch original bracket data
-      const bracketData = await fetchBracket(bracketId);
+      const bracketData = await getBracket(bracketId);
   
       // pair original bracket data again
       const pairedIdeasFromData = pairIdeas(bracketData.ideas);
