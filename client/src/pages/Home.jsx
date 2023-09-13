@@ -99,13 +99,8 @@ export default function Home(props) {
         </MDBCol>
         </>)}
       </MDBRow>
-
-    </MDBContainer>
-      
-
-    
+    </MDBContainer>    
     </>
-
   )
 }
 
