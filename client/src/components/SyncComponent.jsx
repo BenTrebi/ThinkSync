@@ -24,9 +24,9 @@ export default function SyncComponent() {
 
   // fetchData is nested within useEffect because it is asynchronous
   useEffect(() => {
-    async function fetchData() {
+    async function fetchBracketData() {
       try {
-        const bracketData = await fetchBracket(bracketId);
+        const bracketData = await getBracket(bracketId);
         setOriginBracket(bracketData);
         // Initialize pairedIdeas with bracketData.ideas
         const initialPairedIdeas = pairIdeas(bracketData.ideas);
@@ -36,7 +36,7 @@ export default function SyncComponent() {
       }
     }
   
-    fetchData(bracketId);
+    fetchBracketData(bracketId);
   
   }, []);  
 
@@ -109,9 +109,9 @@ export default function SyncComponent() {
       setPairedIdeas(newPairedIdeas);
 
       // before the winner array is cleared with 'handleVoteReset', send vote data from client to server
-      // [HERE] e.g 'handleRoundPost(voteData)'
+      // [HERE] e.g 'postRoundVotes(voteData)'
       // ...
-      // ...
+      postRoundVotes();
       // ..then..
       handleVoteReset();
 
@@ -120,13 +120,95 @@ export default function SyncComponent() {
   }, [round])
 
   // This function queries the database for the bracketData by ID, it is called above ^.
-  async function fetchBracket(bracketId) {
+  async function getBracket(bracketId) {
     try {
       const response = await fetch(`/api/bracket/${bracketId}`)
       const bracketData = await response.json()
       return bracketData
     } catch (error) {
       return console.error(`\nerror fetching bracketData:\n${error}`)
+    }
+  }
+
+  async function postRoundVotes() {
+    try {
+      const response = await fetch('/api/bracket/vote', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+          // POST should look like this (array of objects with these properties):
+          //  [
+          //      {
+          //        "userId": "64ff3af8c12136ee6ee90b59",
+          //        "ideaId": "64ff3bbc11ce5113ae631df5",
+          //        "roundNum": 2
+          //      },
+          //      {
+          //        "userId": "64ff3af8c12136ee6ee90b59",
+          //        "ideaId": "64ff3b828f11a3668ce7053b",
+          //        "roundNum": 2
+          //      }
+          //    ]
+          //
+          // userId is available from client session cookie
+          //
+          // ideaId is avaiable from winners array, which looks like this (winners array is available after each round completion):
+          // **note that this is an array of arrays which contain objects**
+          //
+          //   [
+          //     [
+          //         {
+          //             "_id": "64ff3bbc11ce5113ae631df4",
+          //             "ideaNum": 1,
+          //             "ideaText": "Coding Quiz",
+          //             "userId": "64ff3af8c12136ee6ee90b59",
+          //             "votes": [],
+          //             "createdAt": "2023-09-11T16:09:32.538Z",
+          //             "updatedAt": "2023-09-11T16:09:32.538Z",
+          //             "__v": 0,
+          //             "voteCount": 0,
+          //             "id": "64ff3bbc11ce5113ae631df4"
+          //         },
+          //         {
+          //             "_id": "64ff3bbc11ce5113ae631df8",
+          //             "ideaNum": 5,
+          //             "ideaText": "foreign language immersion - music, movies, news, travel?",
+          //             "userId": "64ff3af8c12136ee6ee90b59",
+          //             "votes": [],
+          //             "createdAt": "2023-09-11T16:09:32.538Z",
+          //             "updatedAt": "2023-09-11T16:09:32.538Z",
+          //             "__v": 0,
+          //             "voteCount": 0,
+          //             "id": "64ff3bbc11ce5113ae631df8"
+          //         }
+          //     ]
+          // ]
+          //
+          // roundNum is available from "round" stateful variable (may need to subtract 1)
+          //
+          //
+          // for now, testing purposes, I am passing the vote in here directly:
+        body: JSON.stringify([
+          {
+            "userId": "64ff3af8c12136ee6ee90b59",
+            "ideaId": "64ff3bbc11ce5113ae631df5",
+            "roundNum": 2
+          },
+          {
+            "userId": "64ff3af8c12136ee6ee90b59",
+            "ideaId": "64ff3b828f11a3668ce7053b",
+            "roundNum": 2
+          }
+        ])
+      })
+
+      console.log(response)
+
+      const roundVoteSuccess = await response.json()
+      return roundVoteSuccess
+    } catch (error) {
+      return console.error(`\nerror posting round vote data:\n${error}`)
     }
   }
 
@@ -189,7 +271,6 @@ export default function SyncComponent() {
       decision: index + 1,
       vote: pairedIdeas[index][ideaIndex].ideaText,
     };
-
     setWinners(updatedWinners);
     console.log(updatedWinners)
 
