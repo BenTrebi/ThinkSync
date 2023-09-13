@@ -69,7 +69,7 @@ export default function OneSavedBracket() {
 
             {oneBracket.ideas.map((item, index) => (
               <div key={index}>
-               <li># {item.ideaNum} - {item.ideaText}</li>
+               <li>{item.ideaText}</li>
               </div>
             ))}
 

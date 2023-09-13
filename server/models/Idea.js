@@ -5,7 +5,7 @@ const ideaSchema = new Schema(
   {
     ideaNum: {
       type: Number,
-      required: true,
+      required: true
     },
 
     ideaText: {
