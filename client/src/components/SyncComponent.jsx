@@ -24,7 +24,7 @@ export default function SyncComponent() {
   // This is the object_id for a bracket in Mongo fetched from URL
   const unparsedBracketId = useParams();
   const bracketId = unparsedBracketId.bracketId
-  console.log(bracketId)
+  // console.log(bracketId)
 
   // fetchData is nested within useEffect because it is asynchronous
   useEffect(() => {
@@ -285,6 +285,7 @@ export default function SyncComponent() {
       // state resets
       setWinners({});
       setRound(1);
+      setFinalRound(false)
   
       console.log("sync reset completed.");
     } catch (error) {
@@ -370,9 +371,9 @@ export default function SyncComponent() {
         ))}
       </MDBRow>
 
-      <MDBBtn className='mt-4 d-flex flex-wrap' onClick={handleVoteReset} disabled={finalRound && Object.keys(winners).length === 0} style={{ backgroundColor: 'purple'}}>Reset Votes</MDBBtn>
+      <MDBBtn className='mt-4 d-flex flex-wrap' onClick={handleVoteReset} disabled={finalRound || Object.keys(winners).length === 0} style={{ backgroundColor: 'purple'}}>Reset Votes</MDBBtn>
 
-      <MDBBtn className='mt-4' onClick={handleSyncReset} disabled={false} style={{ backgroundColor: 'maroon'}}>Reset Sync</MDBBtn>
+      <MDBBtn className='mt-4' onClick={handleSyncReset} disabled={round === 1 ? true : false} style={{ backgroundColor: 'maroon'}}>Reset Sync</MDBBtn>
 
       {/* display winner data (mainly for development debugging)
       The decision-log outputs vote for each decision of each round */}
