@@ -53,10 +53,12 @@ export default function SavedBrackets() {
             <MDBCardTitle className='text-white'>Saved Brackets:</MDBCardTitle>
             <ul >
               { brackets.map( (bracket) => (
-                <MDBCardText key = {bracket._id}><Link to ={`onesavedbracket/${bracket._id}`}>
-                  {bracket.questionTitle}
-                </Link>
-                </MDBCardText>
+                <MDBCardBody>
+                  <MDBCardText key = {bracket._id}><Link to ={`onesavedbracket/${bracket._id}`}>
+                    {bracket.questionTitle}
+                  </Link>
+                  </MDBCardText>
+                </MDBCardBody>
               ))}
             </ul>
             </MDBCardBody>
