@@ -30,4 +30,15 @@ router.post("/verify", async (req, res) => {
   }
 })
 
+router.post("/logout", (req, res) => {
+  // Here, you should perform the logout logic.
+  // This might involve clearing the user's session or token.
+  // After logging out, you can remove the authentication cookie.
+
+  // For example, if you're using cookies for authentication, you can clear the cookie:
+  res.clearCookie("auth-cookie");
+
+  res.json({ status: "success", message: "Logged out successfully" });
+});
+
 module.exports = router;
