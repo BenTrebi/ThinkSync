@@ -17,7 +17,7 @@ import {
 
 export default function ThinkComponent() {
   const [formVal, setFormVal] = useState([{ idea: '' }]);
-  const [formInput, setFormInput] = useState({ questionTitle: '', ideas: [''] })
+  const [formInput, setFormInput] = useState({ title: '', ideas: [''] })
 
   const [ alertState, setAlertState ] = useState({type: "", message:""})
 
@@ -53,28 +53,77 @@ export default function ThinkComponent() {
       setAlertState({type:"danger", message: "Please Enter all Form Fields!"})
     }}
 
+    function generateNumber(){
+      const random = Math.floor(Math.random() * (1000 - 1 + 1) + 1)
+      const secs = Math.round(Date.now() / 1000 ) + random
+      console.log(secs)
+      return secs
+    }
+
+
+    function convertData(data){
+      let ideers= []
+      data.map( item => {
+        const obj = {
+          ideaNum: generateNumber(),
+          ideaText: item,
+          userId: "6501c39bd698d5de1e51d86f"
+        }
+        ideers.push(obj)
+      })
+      return ideers
+    }
+
   const handleSubmit = async (e)  => {
     e.preventDefault()
 
-    const requestData = {
-      bracket:{
-        questionTitle: formInput.questionTitle,
-        userId: '6501c39bd698d5de1e51d86f'
-      },
-        ideers: [{
-          ideaNum: formInput.ideas[i]++,
-          ideaText: formInput.ideas,
-          userId: '6501c39bd698d5de1e51d86f'
-        }]
+    let ideaList = [];
+
+    for (let idea of formInput.ideas) {
+      ideaList.push(idea)
     }
 
-    // console.log(formInput)
+    // function to generate an object for each input field
+    function createIdeaObjects() {
+      
+    }
+
+    createIdeaObjects()
+
+    /*
+      This array comes in when thhe form is submitted:
+      ["abc", "xyz"]
+
+      ideers: [
+        { ideaText: "abc, userId: userId"}
+      ]
+
+
+    */
+
+      
+
+
+    console.log(formInput)
+
+    const requestData = {
+      bracket:{
+        questionTitle: formInput.title,
+        userId: '6501c39bd698d5de1e51d86f'
+      },
+      ideers: convertData(formInput.ideas)
+    }
+
+   console.log(requestData)
+
     let errorsFound = 0 
+
     for (const key in formInput) {
       if (!formInput[key] || !formInput[key].length) {
         errorsFound++
       }
     }
+
     if( errorsFound > 0 ){
       checkErrors(true)
       return
@@ -88,15 +137,16 @@ export default function ThinkComponent() {
       }
     })
       
-      const result = await query.json()
-      console.log(result)
-      if( result.status === "success" && result.payload ){
-        window.location.href = "/sync"
-      } else {
-        errorsFound++
-        checkErrors(true)
-        return
-      }
+    const result = await query.json()
+    console.log(query)
+    console.log(result)
+
+    if( query.ok ){
+      console.log('fires')
+      window.location.href = `/sync/${result.bracket.id}`
+    } else {
+      // continue..
+    }
   }
 
 
