@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 //TODO: Verify this path
-import { useUserContext } from "../utils/UserContext" //comment out to circumvent currUser
+// import { useUserContext } from "../utils/UserContext" //comment out to circumvent currUser
 import { Link } from 'react-router-dom'
 
 import {
@@ -14,31 +14,32 @@ import {
 
 export default function SavedBrackets() {
   //code1of3 to use currUser
-  const { currUser } = useUserContext()
+  // const { currUser } = useUserContext()
+  
   console.log(currUser)
 
   //put brackets into state
   const [ brackets, setBrackets ] = useState([])
 
-  async function getBrackets(userId){//code2of3 to use currUser
-  // async function getBrackets(){//code1of3 to circumvent currUse
-    // const userId = '6500b324072e326187a1fdf1'//code1of3 circumvent currUser
+  // async function getBrackets(userId){//code2of3 to use currUser
+  async function getBrackets(){//code1of3 to circumvent currUse
+    const userId = '6500b324072e326187a1fdf1'//code1of3 circumvent currUser
     const result = await fetch(`/api/bracket/history/${userId}`)
     const data = await result.json()
     setBrackets(data)
   }
 
   //code3of3 to circumvent currUser
-  //   useEffect(() => {
-  //     getBrackets()
-  // },[])
+    useEffect(() => {
+      getBrackets()
+  },[])
 
   //code3of3 to use currUser
-  useEffect(() => {
-    if( currUser?.data._id ){
-      getBrackets(currUser?.data._id)
-    }
-  },[currUser])
+  // useEffect(() => {
+  //   if( currUser?.data._id ){
+  //     getBrackets(currUser?.data._id)
+  //   }
+  // },[currUser])
 
 
 
