@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import Alert from 'react-bootstrap/Alert';
+import { useUserContext } from '../utils/UserContext';
 
 import {
   MDBContainer,
@@ -16,6 +17,7 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function ThinkComponent() {
+  const { currUser } = useUserContext();
   const [formVal, setFormVal] = useState([{ idea: '' }]);
   const [formInput, setFormInput] = useState({ title: '', ideas: [''] })
 
@@ -67,7 +69,7 @@ export default function ThinkComponent() {
         const obj = {
           ideaNum: generateNumber(),
           ideaText: item,
-          userId: "6501c39bd698d5de1e51d86f"
+          userId: currUser.data._id
         }
         ideers.push(obj)
       })
@@ -83,33 +85,12 @@ export default function ThinkComponent() {
       ideaList.push(idea)
     }
 
-    // function to generate an object for each input field
-    function createIdeaObjects() {
-      
-    }
-
-    createIdeaObjects()
-
-    /*
-      This array comes in when thhe form is submitted:
-      ["abc", "xyz"]
-
-      ideers: [
-        { ideaText: "abc, userId: userId"}
-      ]
-
-
-    */
-
-      
-
-
     console.log(formInput)
-
+    console.log(currUser)
     const requestData = {
       bracket:{
         questionTitle: formInput.title,
-        userId: '6501c39bd698d5de1e51d86f'
+        userId: currUser.data._id
       },
       ideers: convertData(formInput.ideas)
     }
@@ -142,7 +123,7 @@ export default function ThinkComponent() {
     console.log(result)
 
     if( query.ok ){
-      console.log('fires')
+      // console.log('fires')
       window.location.href = `/sync/${result.bracket.id}`
     } else {
       // continue..

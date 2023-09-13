@@ -61,7 +61,7 @@ function App() {
       <Header isAuthenticated={currUser.status === "found"} />
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home isAuthenticated={currUser.status === "found"}/>} />
           <Route path='/loginsignup' element={<LoginSignup />} />
           <Route path='/logout' element={<Logout />} />
           <Route path='/sync/:bracketId' element={<Sync/>} />
