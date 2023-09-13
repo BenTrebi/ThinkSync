@@ -63,13 +63,11 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/loginsignup' element={<LoginSignup />} />
-          <Route
-            path='/logout'
-            element={<Logout isAuthenticated={currUser.status === "found"} />}
-          />
-          <Route path='/sync' element={<Sync />} />
+          <Route path='/logout' element={<Logout />} />
+          <Route path='/sync/:bracketId' element={<Sync/>} />
+           <Route path='/onesavedbracket/:_id' element={<OneSavedBracket />} />
           <Route path='/think' element={<Think />} />
-          <Route path='/onesavedbracket/:_id' element={<OneSavedBracket />} />
+          
         </Routes>
       </BrowserRouter>
       <Footer />
