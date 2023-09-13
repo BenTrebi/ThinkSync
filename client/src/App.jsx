@@ -65,7 +65,7 @@ function App() {
           <Route path='/loginsignup' element={<LoginSignup />} />
           <Route path='/logout' element={<Logout />} />
           <Route path='/sync/:bracketId' element={<Sync/>} />
-           <Route path='/onesavedbracket/:_id' element={<OneSavedBracket />} />
+          <Route path='/onesavedbracket/:bracketId' element={<OneSavedBracket />} />
           <Route path='/think' element={<Think />} />
           
         </Routes>
