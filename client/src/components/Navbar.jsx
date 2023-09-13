@@ -1,33 +1,55 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import Cookies from 'js-cookie';
 import {
   MDBContainer,
   MDBNavbar,
   MDBNavbarBrand,
   MDBNavbarToggler,
   MDBIcon,
-  MDBNavbarNav,
-  MDBNavbarItem,
-  MDBNavbarLink,
-  MDBBtn,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
+  // MDBNavbarNav,
+  // MDBNavbarItem,
+  // MDBNavbarLink,
+  // MDBBtn,
+  // MDBDropdown,
+  // MDBDropdownToggle,
+  // MDBDropdownMenu,
+  // MDBDropdownItem,
   MDBCollapse,
 } from 'mdb-react-ui-kit';
 
-export default function Navbar() {
+export default function Navbar({ isAuthenticated } ) {
   // https://mdbootstrap.com/docs/react/navigation/navbar/
 
   const [showBasic, setShowBasic] = useState(false);
-
   const [loggedIn, setLoggedIn] = useState(false);
+
+  // Function to handle user login
+  const handleLogin = () => {
+    // Perform login logic
+    // Once logged in, set loggedIn to true
+    setLoggedIn(true);
+    window.location.href = '/loginsignup'
+  };
+
+  // Function to handle user logout
+  const handleLogout = () => {
+    // Perform logout logic
+    // Once logged out, set loggedIn to false
+    Cookies.remove('auth-cookie')
+    setLoggedIn(false);
+    window.location.href = '/loginsignup'
+  };
+
+  useEffect(() => {
+    setShowBasic(false); // Ensure the menu is closed by default
+  }, [isAuthenticated]);
 
   return (
     <MDBNavbar id='navbar' expand='lg' dark>
       <MDBContainer fluid>
         <MDBNavbarBrand href='/'>
-          <img 
+          <img
             src='./assets/logo.png'
             height='40'
             alt=''
@@ -69,17 +91,17 @@ export default function Navbar() {
                   Login | Signup
                 </a>
               </li>
-              {loggedIn ? (
-                <li className='nav-item'>
-                  <a className='nav-link' href='/logout'>
-                    Logout
-                  </a>
-                </li>
+              {isAuthenticated ? (
+                <>
+                  {/* Render logout button when authenticated */}
+                  <button onClick={handleLogout}>Logout</button>
+                </>
               ) : (
-              <li className='nav-item'>
-                <a className='nav-link'>
-                </a>
-              </li>)}
+                <>
+                  {/* Render login button when not authenticated */}
+                  <button onClick={handleLogin}>Login</button>
+                </>
+              )}
             </ul>
           </div>
         </MDBCollapse>
@@ -87,3 +109,7 @@ export default function Navbar() {
     </MDBNavbar>
   );
 }
+
+Navbar.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+};
