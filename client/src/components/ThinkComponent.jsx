@@ -57,9 +57,15 @@ export default function ThinkComponent() {
     e.preventDefault()
 
     const requestData = {
-      userId: '6501c39bd698d5de1e51d86f',
-      questionTitle: formInput.questionTitle,
-      ideas: formInput.ideas
+      bracket:{
+        questionTitle: formInput.questionTitle,
+        userId: '6501c39bd698d5de1e51d86f'
+      },
+        ideers: [{
+          ideaNum: formInput.ideas[i]++,
+          ideaText: formInput.ideas,
+          userId: '6501c39bd698d5de1e51d86f'
+        }]
     }
 
     // console.log(formInput)
@@ -115,7 +121,7 @@ export default function ThinkComponent() {
                   type='text'
 
                   value={formInput.title || ""}
-                  onChange={(e) => setFormInput({ ...formInput, questionTitle: e.target.value })}
+                  onChange={(e) => setFormInput({ ...formInput, title: e.target.value })}
                   contrast
 
                 />
