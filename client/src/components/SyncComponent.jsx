@@ -203,7 +203,7 @@ export default function SyncComponent() {
           //
           // -----------------------------------------------------------------------------------------
           //
-          // ..for now, testing purposes, I am passing the vote in here directly:
+          // ..for now, testing purposes, I am passing the round vote in here directly:
           //
         body: JSON.stringify([
           {
