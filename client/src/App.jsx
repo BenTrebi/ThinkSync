@@ -12,6 +12,7 @@ import Sync from './pages/Sync'
 import Think from './pages/Think'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import OneSavedBracket  from './pages/OneSavedBracket';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -64,6 +65,7 @@ function App() {
           <Route path='/logout' element={<Logout />} />
           <Route path='/sync' element={<Sync/>} />
           <Route path='/think' element={<Think />} />
+          <Route path='/think/onesavedbracket/:bracketId' element={<OneSavedBracket/>}/>
         </Routes>
       </BrowserRouter>
       <Footer />
