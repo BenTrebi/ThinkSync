@@ -71,7 +71,11 @@ export default function Navbar({ isAuthenticated } ) {
         <MDBCollapse navbar show={showBasic}>
           <div className='d-flex justify-content-end align-items-center w-100'>
             <ul className='navbar-nav'>
-              <li className='nav-item'>
+              
+              {isAuthenticated ? (
+                <>
+                  {/* Render logout button when authenticated */}
+                  <li className='nav-item'>
                 <a className='nav-link' href='/'>
                   Home
                 </a>
@@ -87,19 +91,19 @@ export default function Navbar({ isAuthenticated } ) {
                 </a>
               </li>
               <li className='nav-item'>
-                <a className='nav-link' href='/loginsignup'>
-                  Login | Signup
+                <a onClick={handleLogout} className='nav-link' href='/loginsignup'>
+                  Logout
                 </a>
               </li>
-              {isAuthenticated ? (
-                <>
-                  {/* Render logout button when authenticated */}
-                  <button onClick={handleLogout}>Logout</button>
                 </>
               ) : (
                 <>
-                  {/* Render login button when not authenticated */}
-                  <button onClick={handleLogin}>Login</button>
+                  {/* Render login/signup button when not authenticated */}
+              <li className='nav-item'>
+                <a onClick={handleLogin} className='nav-link' href='/loginsignup'>
+                  Login | Signup
+                </a>
+              </li>
                 </>
               )}
             </ul>

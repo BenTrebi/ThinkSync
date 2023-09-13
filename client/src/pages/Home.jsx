@@ -1,4 +1,8 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { useUserContext } from '../utils/UserContext'
+
 import {
   MDBContainer,
   MDBRow,
@@ -13,7 +17,16 @@ import {
 } from 'mdb-react-ui-kit';
 import groupPhoto from '../assets/images/groupPhoto.jpg'
 
-export default function Home() {
+export default function Home(props) {
+  const [showBasic, setShowBasic] = useState(false);
+
+  const isAuthenticated = props.isAuthenticated;
+  const { currUser } = useUserContext() 
+
+  useEffect(() => {
+    setShowBasic(false); // Ensure the menu is closed by default
+  }, [isAuthenticated]);
+
   return (
     <>
     
@@ -35,11 +48,13 @@ export default function Home() {
 
     <MDBContainer className='my-4'>
       <MDBRow>
-
+      {isAuthenticated ? (
+        <>
         <MDBCol md='6'>
             <MDBCard className='text-white mb-4 new-think'>
               <MDBCardBody>
                 <MDBCardTitle>New Think</MDBCardTitle>
+                
                 <MDBBtn className='button'href='/think'>
                           Get Started
                 </MDBBtn>
@@ -57,7 +72,32 @@ export default function Home() {
               </MDBCardBody>
             </MDBCard>          
         </MDBCol>
-
+        </>
+        ) : (
+          <>
+        <MDBCol md='6'>
+            <MDBCard className='text-white mb-4 new-think'>
+              <MDBCardBody>
+                <MDBCardTitle>New Think</MDBCardTitle>
+                
+                <MDBBtn className='button'href='/loginsignup'>
+                          Get Started
+                </MDBBtn>
+              </MDBCardBody>
+            </MDBCard>          
+        </MDBCol>
+        
+        <MDBCol md='6'>
+            <MDBCard className='text-white mb-6 new-think'>
+              <MDBCardBody>
+                <MDBCardTitle>View Syncs</MDBCardTitle>
+                <MDBBtn className='button'href='/loginsignup'>
+                          Open The Faucet
+                </MDBBtn>
+              </MDBCardBody>
+            </MDBCard>          
+        </MDBCol>
+        </>)}
       </MDBRow>
 
     </MDBContainer>
@@ -68,3 +108,7 @@ export default function Home() {
 
   )
 }
+
+Home.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+};
