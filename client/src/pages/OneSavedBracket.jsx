@@ -1,14 +1,14 @@
 import React from 'react'
-import OneSavedBracketComponent from '../components/OneSavedBracketComponent'
+import OneSavedBracket from '../components/OneSavedBracketComponent'
 // import bubblegum from '../../../server/routes/api/bracketRoutes'
 
-export default function OneSavedBracket() {
+export default function OneSavedBracketty() {
 
   return (
     <>
 
     <span style={{display:'flex' }}>
-    <OneSavedBracketComponent />
+    <OneSavedBracket />
     </span> 
       
     </>
