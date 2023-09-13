@@ -17,16 +17,16 @@ export default function OneSavedBracket() {
   //access parameters from URL using useParams
   const {bracketId} = useParams();
 
-  console.log(bracketId)  //this does capture the bracketId from the URL!!!
+  console.log(bracketId)  //this does capture the bracketId from the URL!!!  
   console.log(`/api/bracket/${bracketId}`)
- 
-  //code1 to use currUser current user from session - don't need user on this page
+
+//code1 to use currUser current user from session - don't need user on this page
   // const { currUser } = useUserContext()
 
 
   //put oneBracket into state
   const [ oneBracket, setOneBracket ] = useState(null)
-
+  const [ winner, setWinner ] = useState(null)
 
   async function getOneBracket(){
     
@@ -42,7 +42,21 @@ export default function OneSavedBracket() {
   console.log(oneBracket)
 
 
-  
+  function getWinner(){
+    let currentLeader = { ideaText: "", votes: [] }
+    oneBracket.ideas.map( idea => {
+      if( idea.votes.length > currentLeader.votes.length ){
+        currentLeader = idea
+      }
+    })
+    console.log(currentLeader)
+    setWinner(currentLeader)
+  }
+
+  useEffect(() => {
+    if( oneBracket) getWinner()
+  },[oneBracket])
+
     useEffect(() => {
       if( bracketId ) getOneBracket()
   },[bracketId])
@@ -55,7 +69,20 @@ export default function OneSavedBracket() {
   //   }
   // },[currUser])
 
+
   if( !oneBracket ) return <></>
+
+  // const ideaVoteList=[]
+  // oneBracket.ideas.map((item, index)=> (
+  //   key = {index},
+  //   ideaVoteList.push({ideaWords:item.ideaText, voteCount: item.votes.length})
+
+  // ));
+
+  // console.log(ideaVoteList)
+
+  
+
   return (
     <>
     <MDBContainer style={{ marginTop:"3%", marginBottom:"3%" }}>
@@ -69,13 +96,14 @@ export default function OneSavedBracket() {
 
             {oneBracket.ideas.map((item, index) => (
               <div key={index}>
-               <li>{item.ideaText}</li>
+               <li>{item.ideaText}  ({item.votes.length} votes)</li>
               </div>
             ))}
 
-
             </ul>
-            <p> And the winner is ...</p>
+            { winner !== null && (
+              <p> And the winner is ... {winner.ideaText}</p>
+            )}
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
