@@ -11,7 +11,8 @@ import {
   MDBCol,
   MDBRow,
   MDBInput,
-  MDBInputGroup
+  MDBInputGroup,
+  MDBIcon
 } from 'mdb-react-ui-kit';
 
 export default function ThinkComponent() {
@@ -100,7 +101,10 @@ export default function ThinkComponent() {
           <MDBCol col='6'>
             <MDBCard className='bg-dark'>
               <MDBCardBody>
-                <MDBCardTitle className='text-white' style={{ color: 'black' }}>Create a Bracket:</MDBCardTitle>
+
+
+                <MDBCardTitle style={{ color: 'white' }}>Create a Bracket:</MDBCardTitle>
+
                 <MDBInput
                   className='text-white'
                   key={formInput.key}
@@ -109,22 +113,25 @@ export default function ThinkComponent() {
                   label='Title/Question'
                   id='titleQuestion'
                   type='text'
-                  value={formInput.questionTitle || ""}
+
+                  value={formInput.title || ""}
                   onChange={(e) => setFormInput({ ...formInput, questionTitle: e.target.value })}
-               
+                  contrast
+
                 />
                 {formInput.ideas.map((idea, i) => (
                   <MDBInputGroup style={{ marginTop: "1%", marginBottom: "1%" }} key={i}>
                     <MDBInput
                     className='text-white'
                     name={`idea${i + 1}`}
-                    label='idea'
+                    label='Idea'
                     type='text'
                     value={idea}
                     onChange={(e) => handleInputChange(e, i)} 
+                    contrast
                     />
-                    <MDBBtn className="btn btn-primary" type="button" id={`button-addon${i + 1}`} onClick={() => deleteIdea(i)}>
-                      Delete
+                    <MDBBtn className="btn btn-primary" type="button" id={`button-addon${i + 1}`} onClick={() => deleteIdea(i)}color='danger'>
+                    <MDBIcon fas icon="backspace" />
                     </MDBBtn>
                   </MDBInputGroup>
                 ) )}
@@ -154,7 +161,7 @@ export default function ThinkComponent() {
               Delete
             </MDBBtn>
             </MDBInputGroup> */}
-                <MDBBtn style={{ marginTop: "2%", marginRight: "80%" }} className='addButton' onClick={addIdea}>Add Choice</MDBBtn>
+                <MDBBtn style={{ marginTop: "2%", marginRight: "80%" }} className='addButton' onClick={addIdea}>Add Idea</MDBBtn>
                 <MDBBtn style={{ marginTop: "2%" }} className='submitButton' onClick={handleSubmit}>Submit</MDBBtn>
               </MDBCardBody>
             </MDBCard>

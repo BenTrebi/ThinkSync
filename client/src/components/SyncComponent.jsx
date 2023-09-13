@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
+import { useParams} from 'react-router-dom';
 import {
   MDBContainer,
   MDBRow,
@@ -17,10 +18,13 @@ export default function SyncComponent() {
   const [round, setRound] = useState(1);
   const [winners, setWinners] = useState({});
   const [originBracket, setOriginBracket] = useState(null);
-  const [pairedIdeas, setPairedIdeas] = useState([])
+  const [pairedIdeas, setPairedIdeas] = useState([]);
+  const [finalRound, setFinalRound] = useState(false);
 
-  // This is the object_id for a bracket in Mongo, hardcoded here (to-do).
-  const bracketId = '64ff3bbc11ce5113ae631df2'
+  // This is the object_id for a bracket in Mongo fetched from URL
+  const unparsedBracketId = useParams();
+  const bracketId = unparsedBracketId.bracketId
+  console.log(bracketId)
 
   // fetchData is nested within useEffect because it is asynchronous
   useEffect(() => {
@@ -116,8 +120,23 @@ export default function SyncComponent() {
       handleVoteReset();
 
       console.log(newPairedIdeas);
+    } 
+    
+    // - FINAL ROUND -
+    if (pairedIdeas.length === 1) {
+      console.log('final round reached!')
+      setFinalRound(true)
     }
   }, [round])
+
+
+  // when finalRound is reached
+  useEffect(() => {
+    if (finalRound) {
+      console.log('final round state change')
+    }
+  }, [finalRound])
+
 
   // This function queries the database for the bracketData by ID, it is called above in a useEffect ^.
   async function getBracket(bracketId) {
@@ -203,7 +222,7 @@ export default function SyncComponent() {
           //
           // -----------------------------------------------------------------------------------------
           //
-          // ..for now, testing purposes, I am passing the vote in here directly:
+          // ..for now, testing purposes, I am passing the round vote in here directly:
           //
         body: JSON.stringify([
           {
@@ -273,13 +292,6 @@ export default function SyncComponent() {
     }
   };
 
-  // This function will be called to post results of finished round to database.
-  function handleRoundPost() {
-    // conditional to make sure 'reset sync' button does not trigger a un-needed round POST
-    if (round > 1) {
-      // logic for fetch POST here..
-    }
-  }
 
   const handleWinnerClick = (index, ideaIndex) => {
     const updatedWinners = {...winners};
@@ -301,7 +313,10 @@ export default function SyncComponent() {
 
   return (
     <MDBContainer>
-      <h2 className='sync-title'>{originBracketTitle}</h2>
+
+      <h2 className='sync-title'>
+        {finalRound ? "Think has been Synced!" : originBracketTitle}
+        </h2>
       
       <MDBRow className='round d-flex flex-nowrap'>
         {/* mapping over pairedIdeas array to generate Decision divs*/}
@@ -312,7 +327,7 @@ export default function SyncComponent() {
 
                 <MDBCardTitle className='text-center mt-2' 
                               style={{ color: 'darkgray', fontSize: '1em' }}>
-                              Decision <span style={{ color: 'white' }}>{index + 1}</span>
+                              {finalRound ? "Final Result" : `Decision ${index + 1}`}
                 </MDBCardTitle>
 
                 <MDBCardBody className='decision-pair-container d-flex justify-content-center flex-nowrap'>
@@ -328,7 +343,7 @@ export default function SyncComponent() {
                   <MDBBtn floating 
                           className='decision-button' 
                           onClick={() => handleWinnerClick(index, 0)}
-                          disabled={winners[index] !== undefined}>
+                          disabled={winners[index] !== undefined || finalRound}>
                     <MDBIcon fas icon="tint" /></MDBBtn>
                   </div>
 
@@ -344,7 +359,7 @@ export default function SyncComponent() {
                       <MDBBtn floating 
                               className='decision-button' 
                               onClick={() => handleWinnerClick(index, 1)}
-                              disabled={winners[index] !== undefined}
+                              disabled={winners[index] !== undefined || finalRound}
                       ><MDBIcon fas icon="tint" /></MDBBtn>
                     </div>
                   )}
@@ -355,9 +370,9 @@ export default function SyncComponent() {
         ))}
       </MDBRow>
 
-      <MDBBtn className='mt-4 d-flex flex-wrap' onClick={handleVoteReset} disabled={winners.length === 0} style={{ backgroundColor: 'purple'}}>Reset Votes</MDBBtn>
+      <MDBBtn className='mt-4 d-flex flex-wrap' onClick={handleVoteReset} disabled={finalRound && Object.keys(winners).length === 0} style={{ backgroundColor: 'purple'}}>Reset Votes</MDBBtn>
 
-      <MDBBtn className='mt-4' onClick={handleSyncReset} disabled={winners.length === 0} style={{ backgroundColor: 'maroon'}}>Reset Sync</MDBBtn>
+      <MDBBtn className='mt-4' onClick={handleSyncReset} disabled={false} style={{ backgroundColor: 'maroon'}}>Reset Sync</MDBBtn>
 
       {/* display winner data (mainly for development debugging)
       The decision-log outputs vote for each decision of each round */}
