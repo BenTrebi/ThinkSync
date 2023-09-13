@@ -228,7 +228,7 @@ export default function SyncComponent() {
         const decisionVotes = decision.map((idea) => ({
           userId: currUser.data._id,
           ideaId: idea._id,
-          roundNum: round
+          roundNum: round - 1 // decrement by 1 here because state has aleady incremented by 1 by now
         }))
 
         voteData.push(...decisionVotes)
