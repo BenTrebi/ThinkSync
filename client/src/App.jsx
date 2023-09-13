@@ -63,7 +63,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/loginsignup' element={<LoginSignup />} />
           <Route path='/logout' element={<Logout />} />
-          <Route path='/sync' element={<Sync/>} />
+          <Route path='/sync/:bracketId' element={<Sync/>} />
           <Route path='/think' element={<Think />} />
           <Route path='/think/onesavedbracket/:bracketId' element={<OneSavedBracket/>}/>
         </Routes>
