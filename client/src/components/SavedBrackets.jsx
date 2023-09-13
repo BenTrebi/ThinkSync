@@ -18,6 +18,7 @@ export default function SavedBrackets() {
   const { currUser } = useUserContext()
   console.log(currUser)
 
+ 
   //put brackets into state
   const [ brackets, setBrackets ] = useState([])
 
@@ -29,10 +30,10 @@ export default function SavedBrackets() {
     setBrackets(data)
   }
 
-  //code3of3 to circumvent currUser
+  //code3of3 to circumvent currUser //use for currUser per Katie
     useEffect(() => {
       getBrackets()
-  },[])
+  },[currUser])
 
   //code3of3 to use currUser
   // useEffect(() => {
@@ -53,12 +54,12 @@ export default function SavedBrackets() {
             <MDBCardTitle className='text-white'>Saved Brackets:</MDBCardTitle>
             <ul >
               { brackets.map( (bracket) => (
-                <MDBCardBody>
-                  <MDBCardText key = {bracket._id}><Link to ={`onesavedbracket/${bracket._id}`}>
+                <div className='bg-dark rounded m-3 p-1 border border-white'>
+                  <p key = {bracket._id}><Link to ={`onesavedbracket/${bracket._id}`}>
                     {bracket.questionTitle}
                   </Link>
-                  </MDBCardText>
-                </MDBCardBody>
+                  </p>
+                </div>
               ))}
             </ul>
             </MDBCardBody>
