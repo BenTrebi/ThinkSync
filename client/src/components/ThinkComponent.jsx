@@ -101,10 +101,7 @@ export default function ThinkComponent() {
           <MDBCol col='6'>
             <MDBCard className='bg-dark'>
               <MDBCardBody>
-
-
                 <MDBCardTitle style={{ color: 'white' }}>Create a Bracket:</MDBCardTitle>
-
                 <MDBInput
                   className='text-white'
                   key={formInput.key}
@@ -113,11 +110,9 @@ export default function ThinkComponent() {
                   label='Title/Question'
                   id='titleQuestion'
                   type='text'
-
                   value={formInput.title || ""}
-                  onChange={(e) => setFormInput({ ...formInput, questionTitle: e.target.value })}
+                  onChange={(e) => setFormInput({ ...formInput, title: e.target.value })}
                   contrast
-
                 />
                 {formInput.ideas.map((idea, i) => (
                   <MDBInputGroup style={{ marginTop: "1%", marginBottom: "1%" }} key={i}>
