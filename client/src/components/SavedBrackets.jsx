@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 //TODO: Verify this path
-// import { useUserContext } from "../utils/UserContext" //comment out to circumvent currUser
+import { useUserContext } from "../utils/UserContext" //comment out to circumvent currUser
 import { Link } from 'react-router-dom'
 
 import {
@@ -8,22 +8,23 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
+  MDBCardText,
   MDBCol,
   MDBRow,
 } from 'mdb-react-ui-kit';
 
 export default function SavedBrackets() {
   //code1of3 to use currUser
-  // const { currUser } = useUserContext()
-  // console.log(currUser)
+  const { currUser } = useUserContext()
+  console.log(currUser)
 
   //put brackets into state
   const [ brackets, setBrackets ] = useState([])
 
-  // async function getBrackets(userId){//code2of3 to use currUser
-  async function getBrackets(){//code1of3 to circumvent currUse
-    const userId = '6500b324072e326187a1fdf1'//code2of3 circumvent currUser
-    const result = await fetch(`/api/bracket/history/${userId}`)
+  async function getBrackets(){//code2of3 to use currUser
+  // async function getBrackets(){//code1of3 to circumvent currUse
+  //   const userId = '65020085ff66366cfe539df3'//code2of3 circumvent currUser
+    const result = await fetch(`/api/bracket/history/${currUser.data._id}`)
     const data = await result.json()
     setBrackets(data)
   }
@@ -36,7 +37,7 @@ export default function SavedBrackets() {
   //code3of3 to use currUser
   // useEffect(() => {
   //   if( currUser?.data._id ){
-  //     getBrackets(currUser?.data._id)
+  //     getBrackets()
   //   }
   // },[currUser])
 
@@ -52,10 +53,12 @@ export default function SavedBrackets() {
             <MDBCardTitle className='text-white'>Saved Brackets:</MDBCardTitle>
             <ul >
               { brackets.map( (bracket) => (
-                <li key = {bracket._id}><Link to ={`onesavedbracket/${bracket._id}`}>
-                  {bracket.questionTitle}
-                </Link>
-                </li>
+                <MDBCardBody>
+                  <MDBCardText key = {bracket._id}><Link to ={`onesavedbracket/${bracket._id}`}>
+                    {bracket.questionTitle}
+                  </Link>
+                  </MDBCardText>
+                </MDBCardBody>
               ))}
             </ul>
             </MDBCardBody>
