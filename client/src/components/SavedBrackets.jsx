@@ -22,7 +22,7 @@ export default function SavedBrackets() {
 
   // async function getBrackets(userId){//code2of3 to use currUser
   async function getBrackets(){//code1of3 to circumvent currUse
-    const userId = '6500b324072e326187a1fdf1'//code2of3 circumvent currUser
+    const userId = '65020085ff66366cfe539df3'//code2of3 circumvent currUser
     const result = await fetch(`/api/bracket/history/${userId}`)
     const data = await result.json()
     setBrackets(data)
