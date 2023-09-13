@@ -8,6 +8,7 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
+  MDBCardText,
   MDBCol,
   MDBRow,
 } from 'mdb-react-ui-kit';
@@ -52,10 +53,12 @@ export default function SavedBrackets() {
             <MDBCardTitle className='text-white'>Saved Brackets:</MDBCardTitle>
             <ul >
               { brackets.map( (bracket) => (
-                <li key = {bracket._id}><Link to ={`onesavedbracket/${bracket._id}`}>
-                  {bracket.questionTitle}
-                </Link>
-                </li>
+                <MDBCardBody>
+                  <MDBCardText key = {bracket._id}><Link to ={`onesavedbracket/${bracket._id}`}>
+                    {bracket.questionTitle}
+                  </Link>
+                  </MDBCardText>
+                </MDBCardBody>
               ))}
             </ul>
             </MDBCardBody>
