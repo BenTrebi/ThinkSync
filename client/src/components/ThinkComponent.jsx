@@ -54,6 +54,13 @@ export default function ThinkComponent() {
 
   const handleSubmit = async (e)  => {
     e.preventDefault()
+
+    const requestData = {
+      userId: '6501c39bd698d5de1e51d86f',
+      questionTitle: formInput.questionTitle,
+      ideas: formInput.ideas
+    }
+
     // console.log(formInput)
     let errorsFound = 0 
     for (const key in formInput) {
@@ -68,7 +75,7 @@ export default function ThinkComponent() {
     
     const query = await fetch("/api/idea", {
       method: "POST",
-      body: JSON.stringify(formInput),
+      body: JSON.stringify(requestData),
       headers: {
         "Content-Type": "application/json",
       }
