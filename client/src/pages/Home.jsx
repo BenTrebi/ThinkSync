@@ -50,8 +50,8 @@ export default function Home(props) {
       <MDBRow>
       {isAuthenticated ? (
         <>
-        <MDBCol md='6'>
-            <MDBCard className='text-white mb-4 new-think'>
+        <MDBCol md='12'>
+            <MDBCard alignment='center' className='text-white mb-4 new-think'>
               <MDBCardBody>
                 <MDBCardTitle>New Think</MDBCardTitle>
                 
@@ -62,7 +62,7 @@ export default function Home(props) {
             </MDBCard>          
         </MDBCol>
         
-        <MDBCol md='6'>
+        {/* <MDBCol md='6'>
             <MDBCard className='text-white mb-6 new-think'>
               <MDBCardBody>
                 <MDBCardTitle>View Syncs</MDBCardTitle>
@@ -71,12 +71,12 @@ export default function Home(props) {
                 </MDBBtn>
               </MDBCardBody>
             </MDBCard>          
-        </MDBCol>
+        </MDBCol> */}
         </>
         ) : (
           <>
-        <MDBCol md='6'>
-            <MDBCard className='text-white mb-4 new-think'>
+        <MDBCol md='12'>
+            <MDBCard alignment='center' className='text-white mb-4 new-think'>
               <MDBCardBody>
                 <MDBCardTitle>New Think</MDBCardTitle>
                 
@@ -87,7 +87,7 @@ export default function Home(props) {
             </MDBCard>          
         </MDBCol>
         
-        <MDBCol md='6'>
+        {/* <MDBCol md='6'>
             <MDBCard className='text-white mb-6 new-think'>
               <MDBCardBody>
                 <MDBCardTitle>View Syncs</MDBCardTitle>
@@ -96,7 +96,7 @@ export default function Home(props) {
                 </MDBBtn>
               </MDBCardBody>
             </MDBCard>          
-        </MDBCol>
+        </MDBCol> */}
         </>)}
       </MDBRow>
     </MDBContainer>    

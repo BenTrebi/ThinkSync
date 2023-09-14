@@ -85,11 +85,11 @@ export default function Navbar({ isAuthenticated } ) {
                   Think
                 </a>
               </li>
-              <li className='nav-item'>
+              {/* <li className='nav-item'>
                 <a className='nav-link' href='/sync'>
                   Sync
                 </a>
-              </li>
+              </li> */}
               <li className='nav-item'>
                 <a onClick={handleLogout} className='nav-link' href='/loginsignup'>
                   Logout
