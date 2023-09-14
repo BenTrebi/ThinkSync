@@ -32,4 +32,4 @@ After installation, the script `npm run start` will initiate the program.
 
 [Repository](https://github.com/BenTrebi/ThinkSync)
 
-[Deployed](link to go here)
+[Deployed](https://thinksync-1e5fbc55e5f7.herokuapp.com)
