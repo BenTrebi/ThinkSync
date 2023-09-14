@@ -111,18 +111,25 @@ export default function SyncComponent() {
         // completing the array
         newPairedIdeas.push(newPair);
       }
-  
-      // set the updated pairedIdeas
-      setPairedIdeas(newPairedIdeas);
+
+      console.log(newPairedIdeas)
+
+      // flatten array of arrays (objects) into single array of objects (ideas)
+      const flattenedIdeas = flattenArray(newPairedIdeas);
+
+      // shuffle flattened array
+      const shuffledIdeas = shuffleArray(flattenedIdeas);
+
+      // pair ideas of the newly shuffled array
+      const pairedShuffledIdeas = pairIdeas(shuffledIdeas);
+
+      // set updated + shuffled ideas for pairedIdeas
+      setPairedIdeas(pairedShuffledIdeas);
 
       // before the winner array is cleared with 'handleVoteReset', send vote data from client to server
-      // [HERE] e.g 'postRoundVotes(voteData)'
-      // ...
       postRoundVotes(newPairedIdeas);
       // ..then..
       handleVoteReset();
-
-      // console.log(newPairedIdeas);
     } 
     
     // - FINAL ROUND -
@@ -140,6 +147,34 @@ export default function SyncComponent() {
     }
   }, [finalRound])
 
+  // turns an array of multiple arrays into a single array
+  function flattenArray(arrayOfArrays) {
+    const flattenedArray = [];
+  
+    for (let i = 0; i < arrayOfArrays.length; i++) {
+      const currentArray = arrayOfArrays[i];
+      
+      for (let j = 0; j < currentArray.length; j++) {
+        flattenedArray.push(currentArray[j]);
+      }
+    }
+  
+    return flattenedArray;
+  }
+
+  // shuffle an array using Fisher-Yates shuffle algorithm
+  function shuffleArray(array) {
+    const shuffledArray = [...array]; // Create a copy of the original array
+  
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1)); // get a random index between 0 and i
+  
+      // Swap elements at i and j
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+  
+    return shuffledArray;
+  }
 
   // This function queries the database for the bracketData by ID, it is called above in a useEffect ^.
   async function getBracket(bracketId) {
@@ -254,17 +289,17 @@ export default function SyncComponent() {
   }
 
   // pairs ideas and pushes them into a new array.
-  const pairIdeas = (originBracketIdeas) => {
+  const pairIdeas = (ideasToPair) => {
     const pairedIdeas = [];
-    const length = originBracketIdeas.length;
+    const length = ideasToPair.length;
 
     // loop through array in pairs
     for (let i = 0; i < length; i += 2) {
       if (i + 1 < length) {
-        pairedIdeas.push([originBracketIdeas[i], originBracketIdeas[i + 1]]);
+        pairedIdeas.push([ideasToPair[i], ideasToPair[i + 1]]);
       } else {
         // if odd number of ideas, then push last item individually
-        pairedIdeas.push([originBracketIdeas[i]]);
+        pairedIdeas.push([ideasToPair[i]]);
       }
     }
 
