@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { useParams} from 'react-router-dom';
+import { useUserContext } from '../utils/UserContext'
 import {
   MDBContainer,
   MDBRow,
@@ -14,6 +15,8 @@ import {
 } from 'mdb-react-ui-kit';
 
 export default function SyncComponent() {
+
+  const { currUser } = useUserContext() 
 
   const [round, setRound] = useState(1);
   const [winners, setWinners] = useState({});
@@ -119,7 +122,7 @@ export default function SyncComponent() {
       // ..then..
       handleVoteReset();
 
-      console.log(newPairedIdeas);
+      // console.log(newPairedIdeas);
     } 
     
     // - FINAL ROUND -
@@ -150,94 +153,96 @@ export default function SyncComponent() {
   }
 
   async function postRoundVotes(pairedWinners) {
+    // -----------------------------------------------------------------------------------------
+    // POST should look like this (array of objects with these properties):
+    //
+    //  [
+    //      {
+    //        "userId": "64ff3af8c12136ee6ee90b59",
+    //        "ideaId": "64ff3bbc11ce5113ae631df5",
+    //        "roundNum": 2
+    //      },
+    //      {
+    //        "userId": "64ff3af8c12136ee6ee90b59",
+    //        "ideaId": "64ff3b828f11a3668ce7053b",
+    //        "roundNum": 2
+    //      }
+    //    ]
+    //
+    //
+    // -----------------------------------------------------------------------------------------
+    //
+    // userId is available from client session cookie from: currUser.data._id
+    //
+    // -----------------------------------------------------------------------------------------
+    //
+    //
+    // ideaId is avaiable from "pairedWinners" which is passed as an arugment to this function.
+    //
+    //  It looks like this:
+    //    * see this by using: "console.log(pairedWinners)" *
+    //    **note that this is an array of arrays which contain object pairs (of ideas)**
+    //
+    //
+    //   [
+    //     [
+    //         {
+    //             "_id": "64ff3bbc11ce5113ae631df4",
+    //             "ideaNum": 1,
+    //             "ideaText": "Coding Quiz",
+    //             "userId": "64ff3af8c12136ee6ee90b59",
+    //             "votes": [],
+    //             "createdAt": "2023-09-11T16:09:32.538Z",
+    //             "updatedAt": "2023-09-11T16:09:32.538Z",
+    //             "__v": 0,
+    //             "voteCount": 0,
+    //             "id": "64ff3bbc11ce5113ae631df4"
+    //         },
+    //         {
+    //             "_id": "64ff3bbc11ce5113ae631df8",
+    //             "ideaNum": 5,
+    //             "ideaText": "foreign language immersion - music, movies, news, travel?",
+    //             "userId": "64ff3af8c12136ee6ee90b59",
+    //             "votes": [],
+    //             "createdAt": "2023-09-11T16:09:32.538Z",
+    //             "updatedAt": "2023-09-11T16:09:32.538Z",
+    //             "__v": 0,
+    //             "voteCount": 0,
+    //             "id": "64ff3bbc11ce5113ae631df8"
+    //         }
+    //     ]
+    // ]
+    //
+    // -----------------------------------------------------------------------------------------
+    //
+    // roundNum is available from "round" stateful variable (may need to subtract 1)
+    //
+    // -----------------------------------------------------------------------------------------
+
     try {
+
+      // create the voteData array to send to server
+      const voteData = [];
+
+      for (const decision of pairedWinners) {
+        const decisionVotes = decision.map((idea) => ({
+          userId: currUser.data._id,
+          ideaId: idea._id,
+          roundNum: round - 1 // decrement by 1 here because state has aleady incremented by 1 by now
+        }))
+
+        voteData.push(...decisionVotes)
+      }
+
+      console.log(voteData)
+
       const response = await fetch('/api/bracket/vote', {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-          // -----------------------------------------------------------------------------------------
-          // POST should look like this (array of objects with these properties):
-          //
-          //  [
-          //      {
-          //        "userId": "64ff3af8c12136ee6ee90b59",
-          //        "ideaId": "64ff3bbc11ce5113ae631df5",
-          //        "roundNum": 2
-          //      },
-          //      {
-          //        "userId": "64ff3af8c12136ee6ee90b59",
-          //        "ideaId": "64ff3b828f11a3668ce7053b",
-          //        "roundNum": 2
-          //      }
-          //    ]
-          //
-          //
-          // -----------------------------------------------------------------------------------------
-          //
-          // userId is available from client session cookie
-          //
-          // -----------------------------------------------------------------------------------------
-          //
-          //
-          // ideaId is avaiable from "pairedWinners" which is passed as an arugment to this function.
-          //
-          //  It looks like this:
-          //    * see this by using: "console.log(pairedWinners)" *
-          //    **note that this is an array of arrays which contain object pairs (of ideas)**
-          //
-          //
-          //   [
-          //     [
-          //         {
-          //             "_id": "64ff3bbc11ce5113ae631df4",
-          //             "ideaNum": 1,
-          //             "ideaText": "Coding Quiz",
-          //             "userId": "64ff3af8c12136ee6ee90b59",
-          //             "votes": [],
-          //             "createdAt": "2023-09-11T16:09:32.538Z",
-          //             "updatedAt": "2023-09-11T16:09:32.538Z",
-          //             "__v": 0,
-          //             "voteCount": 0,
-          //             "id": "64ff3bbc11ce5113ae631df4"
-          //         },
-          //         {
-          //             "_id": "64ff3bbc11ce5113ae631df8",
-          //             "ideaNum": 5,
-          //             "ideaText": "foreign language immersion - music, movies, news, travel?",
-          //             "userId": "64ff3af8c12136ee6ee90b59",
-          //             "votes": [],
-          //             "createdAt": "2023-09-11T16:09:32.538Z",
-          //             "updatedAt": "2023-09-11T16:09:32.538Z",
-          //             "__v": 0,
-          //             "voteCount": 0,
-          //             "id": "64ff3bbc11ce5113ae631df8"
-          //         }
-          //     ]
-          // ]
-          //
-          // -----------------------------------------------------------------------------------------
-          //
-          // roundNum is available from "round" stateful variable (may need to subtract 1)
-          //
-          // -----------------------------------------------------------------------------------------
-          //
-          // ..for now, testing purposes, I am passing the round vote in here directly:
-          //
-        body: JSON.stringify([
-          {
-            "userId": "64ff3af8c12136ee6ee90b59",
-            "ideaId": "64ff3bbc11ce5113ae631df5",
-            "roundNum": 2
-          },
-          {
-            "userId": "64ff3af8c12136ee6ee90b59",
-            "ideaId": "64ff3b828f11a3668ce7053b",
-            "roundNum": 2
-          }
-        ])
+        body: JSON.stringify(voteData),
       })
-
       
       console.log(response)
 
