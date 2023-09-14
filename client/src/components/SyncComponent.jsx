@@ -111,18 +111,23 @@ export default function SyncComponent() {
         // completing the array
         newPairedIdeas.push(newPair);
       }
+
+      console.log(newPairedIdeas)
+
+      // shuffling newPairedIdeas to prevent a bye from persisting across rounds
+      const shuffledNewPairedIdeas = shuffleArray(newPairedIdeas)
+      // console.log(shuffledNewPairedIdeas)
   
       // set the updated pairedIdeas
-      setPairedIdeas(newPairedIdeas);
+      setPairedIdeas(shuffledNewPairedIdeas);
+
+      
+
 
       // before the winner array is cleared with 'handleVoteReset', send vote data from client to server
-      // [HERE] e.g 'postRoundVotes(voteData)'
-      // ...
       postRoundVotes(newPairedIdeas);
       // ..then..
       handleVoteReset();
-
-      // console.log(newPairedIdeas);
     } 
     
     // - FINAL ROUND -
@@ -139,6 +144,22 @@ export default function SyncComponent() {
       console.log('final round state change')
     }
   }, [finalRound])
+
+
+  // shuffle an array using Fisher-Yates shuffle algorithm
+  function shuffleArray(array) {
+    const shuffledArray = [...array]; // Create a copy of the original array
+  
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1)); // get random index between 0 to i
+  
+      // Swap elements at i and j
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+    }
+  
+    return shuffledArray;
+  }
+  
 
 
   // This function queries the database for the bracketData by ID, it is called above in a useEffect ^.
