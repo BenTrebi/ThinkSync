@@ -133,17 +133,18 @@ export default function ThinkComponent() {
 
   return (
     <>
-      <MDBContainer style={{ marginTop: "3%", marginBottom: "3%" }}>
+      <MDBContainer className='mt-5'>
         <MDBRow>
           <MDBCol col='6'>
             <MDBCard className='bg-dark'>
-              <MDBCardBody>
-                <MDBCardTitle style={{ color: 'white' }}>Create a Bracket:</MDBCardTitle>
+              <MDBCardBody className='d-flex flex-wrap'>
+
+                <MDBCardTitle className='mb-3'>Create a Bracket:</MDBCardTitle>
+
                 <MDBInput
                   className='text-white'
                   key={formInput.key}
                   name='Title'
-                  style={{ marginTop: "3%", marginBottom: "3%" }}
                   label='Title/Question'
                   id='titleQuestion'
                   type='text'
@@ -151,8 +152,9 @@ export default function ThinkComponent() {
                   onChange={(e) => setFormInput({ ...formInput, title: e.target.value })}
                   contrast
                 />
+
                 {formInput.ideas.map((idea, i) => (
-                  <MDBInputGroup style={{ marginTop: "1%", marginBottom: "1%" }} key={i}>
+                  <MDBInputGroup key={i} className='mt-3'>
                     <MDBInput
                     className='text-white'
                     name={`idea${i + 1}`}
@@ -162,39 +164,20 @@ export default function ThinkComponent() {
                     onChange={(e) => handleInputChange(e, i)} 
                     contrast
                     />
-                    <MDBBtn className="btn btn-primary" type="button" id={`button-addon${i + 1}`} onClick={() => deleteIdea(i)}color='danger'>
-                    <MDBIcon fas icon="backspace" />
+                    <MDBBtn className="btn bg-dark delete-button" type="button" id={`button-addon${i + 1}`} onClick={() => deleteIdea(i)}>
+                    <MDBIcon fas icon="backspace" size='2x'/>
                     </MDBBtn>
                   </MDBInputGroup>
-                ) )}
-                {/* {formVal.map((item, i) => (
-                  <MDBInputGroup style={{ marginTop: "1%", marginBottom: "1%" }} key={i}>
-                    <MDBInput name='idea' label='Idea' type='text' value={formInput.idea || ""} onChange={handleInputChange} />
-                    <MDBBtn className="btn btn-primary" type="button" id="button-addon1" onClick={deleteIdea}>
-                      Delete
-                    </MDBBtn>
-                  </MDBInputGroup>
-                ))} */}
-                {/* <MDBInputGroup style={{marginTop:"1%", marginBottom:"1%"}}>
-            <MDBInput  name='idea2' label='Idea' type='text' value={formInput.idea2 || ""} onChange={handleInputChange} />
-            <MDBBtn className="btn btn-primary" type="button" id="button-addon2" onClick={deleteIdea}>
-               Delete
-            </MDBBtn>
-            </MDBInputGroup>
-            <MDBInputGroup style={{marginTop:"1%", marginBottom:"1%"}}>
-            <MDBInput  name='idea3' label='Idea'  type='text' value={formInput.idea3 || ""} onChange={handleInputChange} />
-            <MDBBtn className="btn btn-primary" type="button" id="button-addon3" onClick={deleteIdea}>
-               Delete
-            </MDBBtn>
-            </MDBInputGroup>
-            <MDBInputGroup style={{marginTop:"1%", marginBottom:"1%"}}>
-            <MDBInput  name='idea4' label='Idea' type='text' value={formInput.idea4 || ""} onChange={handleInputChange} />
-            <MDBBtn className="btn btn-primary" type="button" id="button-addon4" onClick={deleteIdea}>
-              Delete
-            </MDBBtn>
-            </MDBInputGroup> */}
-                <MDBBtn style={{ marginTop: "2%", marginRight: "80%" }} className='addButton' onClick={addIdea}>Add Idea</MDBBtn>
-                <MDBBtn style={{ marginTop: "2%" }} className='submitButton' onClick={handleSubmit}>Submit</MDBBtn>
+                ))}
+
+                <MDBBtn className='addButton mt-4' onClick={addIdea}>
+                  <MDBIcon far icon="plus-square" size='2x'/>
+                </MDBBtn>
+
+                <MDBBtn className='submitButton mt-4' onClick={handleSubmit}>
+                  Submit
+                </MDBBtn>
+
               </MDBCardBody>
             </MDBCard>
           </MDBCol>
