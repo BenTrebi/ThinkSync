@@ -44,13 +44,15 @@ export default function SavedBrackets() {
 
               { brackets.map( (bracket) => (
                 <MDBRipple>
-                  <Link to ={`onesavedbracket/${bracket._id}`}>
-                    <MDBListGroupItem action noBorders className='px-3 mt-1 bg-dark'>
+                  
+                    <MDBListGroupItem action noBorders className='px-3 bg-dark'>
+                      <Link to ={`onesavedbracket/${bracket._id}`}>
                         <MDBBtn className='saved-bracket-item'>
                           {bracket.questionTitle}
                         </MDBBtn>
+                      </Link>
                     </MDBListGroupItem>
-                  </Link>
+
                 </MDBRipple>
               ))}
 
