@@ -2,25 +2,27 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ThinkComponent from '../components/ThinkComponent'
 import SavedBrackets from '../components/SavedBrackets'
-
-
-
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol
+} from 'mdb-react-ui-kit';
 
 
 export default function Think() {
   return (
-    <>
-      <span style={{ display: 'flex' }}>
-        <aside>
+    <MDBContainer>
+        <MDBRow>
+          <MDBCol>
+            <ThinkComponent />
+          </MDBCol>
+        </MDBRow>
+        <MDBRow>
+        <MDBCol>
             <SavedBrackets />
-        </aside>
-        <ThinkComponent />
-      </span>
-    </>
+          </MDBCol>
+        </MDBRow>
+    </MDBContainer>
   )
 }
-
-{/* <Link to='/onesavedbracket/:_id'>
-<SavedBrackets />
-</Link> */}
 

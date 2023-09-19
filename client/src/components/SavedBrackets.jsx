@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-//TODO: Verify this path
-import { useUserContext } from "../utils/UserContext" //comment out to circumvent currUser
+import { useUserContext } from "../utils/UserContext"
 import { Link } from 'react-router-dom'
-
 import {
   MDBContainer,
   MDBCard,
@@ -11,74 +9,58 @@ import {
   MDBCardText,
   MDBCol,
   MDBRow,
+  MDBListGroup,
+  MDBListGroupItem,
+  MDBRipple,
+  MDBBtn
 } from 'mdb-react-ui-kit';
 
 export default function SavedBrackets() {
-  //code1of3 to use currUser
+
   const { currUser } = useUserContext()
   console.log(currUser)
 
- 
-  //put brackets into state
   const [ brackets, setBrackets ] = useState([])
 
-  async function getBrackets(){//code2of3 to use currUser
-  // async function getBrackets(){//code1of3 to circumvent currUse
-  //   const userId = '65020085ff66366cfe539df3'//code2of3 circumvent currUser
+  async function getBrackets() {
     const result = await fetch(`/api/bracket/history/${currUser.data._id}`)
     const data = await result.json()
     setBrackets(data)
   }
 
-  //code3of3 to circumvent currUser //use for currUser per Katie
     useEffect(() => {
       getBrackets()
   },[currUser])
 
-  //code3of3 to use currUser
-  // useEffect(() => {
-  //   if( currUser?.data._id ){
-  //     getBrackets()
-  //   }
-  // },[currUser])
-
-
 
   return (
-    <>
-    <MDBContainer style={{ marginTop:"3%", marginBottom:"3%" }}>
+    <MDBContainer className='mt-5'>
       <MDBRow>
         <MDBCol col='2'>
           <MDBCard className='bg-dark text-white'>
             <MDBCardBody>
-            <MDBCardTitle className='text-white'>Saved Brackets:</MDBCardTitle>
-            <ul >
+            <MDBCardTitle className='text-white'>Your Completed Brackets:</MDBCardTitle>
+            <MDBListGroup className='mt-4'>
+
               { brackets.map( (bracket) => (
-                <div className='bg-dark rounded m-3 p-1 border border-white'>
-                  <p key = {bracket._id}><Link to ={`onesavedbracket/${bracket._id}`}>
-                    {bracket.questionTitle}
-                  </Link>
-                  </p>
-                </div>
+                <MDBRipple>
+                  
+                    <MDBListGroupItem action noBorders className='px-3 bg-dark'>
+                      <Link to ={`onesavedbracket/${bracket._id}`}>
+                        <MDBBtn className='saved-bracket-item'>
+                          {bracket.questionTitle}
+                        </MDBBtn>
+                      </Link>
+                    </MDBListGroupItem>
+
+                </MDBRipple>
               ))}
-            </ul>
+
+            </MDBListGroup>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
       </MDBRow>
     </MDBContainer>
-    </>
   )
 }
-
-
-
-// { brackets.map( (bracket) => (
-                
-//   <li>
-//     <a href={`onesavedbracket/${bracket._id}`}>
-//       {bracket.questionTitle}
-//       {bracket._id}
-//     </a>
-//   </li>
-// ))}

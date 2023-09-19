@@ -168,6 +168,55 @@ a:hover {
   margin: 0;
 }
 
+/***********************************************/
+/* Saved Brackets ******************************/
+.saved-bracket-item {
+  background-color: var(--secondary-purple);
+  color: lightgray;
+  border: 1px solid var(--lighter-purple);
+  -webkit-box-shadow: inset 0px 0px 15px 1px rgba(196,25,179,1);
+  -moz-box-shadow: inset 0px 0px 15px 1px rgba(196,25,179,1);
+  box-shadow: inset 0px 0px 15px 1px rgba(196,25,179,1);
+}
+
+.saved-bracket-item:hover {
+  background-color: var(--lighter-purple);
+  color: white;
+
+}
+
+/***********************************************/
+/* Create a Bracket ****************************/
+.addButton {
+  background-color: var(--accent-color-teal);
+  border: 1px solid var(--highlight-color);
+}
+
+.addButton:hover {
+  background-color: var(--highlight-color);
+  color: black;
+}
+
+.submitButton {
+  background-color: var(--secondary-purple);
+  margin-left: 1em;
+  border: 1px solid var(--lighter-purple);
+}
+
+.submitButton:hover {
+  background-color: var(--lighter-purple);
+}
+
+.delete-button {
+  background-color: var(--dark-gray);
+  box-shadow: none;
+  border: 1px solid #af4d4d;
+}
+
+.delete-button:hover {
+  color: red;
+  border: 1px solid #af4d4d;
+}
 
 /***********************************************/
 /* Footer **************************************/

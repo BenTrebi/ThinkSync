@@ -50,7 +50,7 @@ export default function Navbar({ isAuthenticated } ) {
       <MDBContainer fluid>
         <MDBNavbarBrand href='/'>
           <img
-            src='./assets/logo.png'
+            src='/assets/logo.png'
             height='40'
             alt=''
             loading='lazy'

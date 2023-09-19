@@ -17,7 +17,7 @@ export default function Footer() {
       <div className='footer text-center p-1'>
 
         <img 
-            src='./assets/logo.png'
+            src='/assets/logo.png'
             height='30'
             alt=''
             loading='lazy'
