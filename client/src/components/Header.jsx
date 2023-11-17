@@ -7,10 +7,9 @@ export default function Header(props) {
   // You can access props.isAuthenticated to get the value
   const isAuthenticated = props.isAuthenticated;
   const { currUser } = useUserContext() 
-  console.log(currUser)
 
   useEffect(() => {
-    console.log(currUser)
+    // console.log(currUser)
   }, [currUser])
 
   return (

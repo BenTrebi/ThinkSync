@@ -16,8 +16,8 @@ import {
 export default function OneSavedBracket() {
   const {bracketId} = useParams();
 
-  console.log(bracketId)
-  console.log(`/api/bracket/${bracketId}`)
+  // console.log(bracketId)
+  // console.log(`/api/bracket/${bracketId}`)
 
   const [ oneBracket, setOneBracket ] = useState(null)
   const [ winner, setWinner ] = useState(null)
@@ -26,12 +26,10 @@ export default function OneSavedBracket() {
     
     const result = await fetch(`/api/bracket/${bracketId}`)
     const data = await result.json()
-    console.log("1")
     setOneBracket(data)
   }
 
-  console.log("2")
-  console.log(oneBracket)
+  // console.log(oneBracket)
 
 
   function getWinner(){
@@ -41,7 +39,7 @@ export default function OneSavedBracket() {
         currentLeader = idea
       }
     })
-    console.log(currentLeader)
+    // console.log(currentLeader)
     setWinner(currentLeader)
   }
 

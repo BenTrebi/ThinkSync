@@ -21,7 +21,7 @@ function App() {
   async function verifyUser() {
     setCurrUser({ status: "searching", data: null });
     if (Cookies.get("auth-cookie")) {
-      console.log("verify");
+      // console.log("verify");
       try {
         const query = await fetch("/api/auth/verify", {
           method: "post",
@@ -31,7 +31,7 @@ function App() {
           },
         });
         const result = await query.json();
-        console.log(result);
+        // console.log(result);
         if (result && result.status === "success") {
           setCurrUser({ status: "found", data: result.payload });
         } else {
